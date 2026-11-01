@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 PROFILES = (
     ('browser-readonly-0.2', 'RLAB-PAGE-READONLY-0.2', '0.2',
      'browser-page-source; host implementation required', ('fleet-pressure',),
@@ -69,7 +69,18 @@ def make_catalog(root=ROOT):
             'tools': [entry(base / 'tools' / name) for name in tool_names],
             'files': [entry(p) for p in source_files(base)],
         })
-    return {'catalogVersion': 1, 'repositoryVersion': VERSION,
+    central = {
+        'id': 'RLAB-CENTRAL-ADMISSION-1',
+        'requiredFor': 'official registered-host admission',
+        'repository': 'https://github.com/RateHighway/rlab-pages',
+        'visibility': 'private',
+        'branch': 'master',
+        'validator': {'path': 'tools/validate_registered_page.py',
+                      'sha256': digest(root / 'tools/validate_registered_page.py')},
+        'schemas': [{'path': p.relative_to(root).as_posix(), 'sha256': digest(p)}
+                    for p in sorted((root / 'schemas').glob('*-record.schema.json'))],
+    }
+    return {'catalogVersion': 2, 'repositoryVersion': VERSION, 'centralAdmission': central,
             'revisionBinding': 'enclosing-git-commit', 'license': 'Apache-2.0',
             'maturity': 'draft', 'profiles': profiles}
 

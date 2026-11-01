@@ -1,5 +1,7 @@
 # RevenueLab extension standard 0.3
 
+**Official host admission:** apply [RLAB-CENTRAL-ADMISSION-1](../../../docs/central-registration.md) in addition to this profile. Centrally retain every page package and source, record its host placements, and verify current central admission before display. The existing closed manifest grammar is unchanged; design-only content remains non-executable.
+
 **Draft Standard | 2026-10-02**
 
 ## 1. Product promise and boundary

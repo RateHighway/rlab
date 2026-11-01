@@ -10,6 +10,14 @@ applicable license terms. Implementing the published format does not require
 buying RME, using a RateHighway account or routing data through RateHighway.
 Independent hosts can use their own identity, infrastructure and adapters.
 
+Official registered-host operation additionally follows
+[central admission](central-registration.md): source/packages are retained in
+the private central repository and host placements are recorded and checked.
+That operating policy does not add a condition to the Apache-2.0 license or
+revoke independent implementation rights. Central submission requires the
+right to provide the source to RateHighway; it does not make private page
+source public or change its owner's license.
+
 Builders retain ownership of their original page work. Host developers retain
 ownership of their applications. Reusing supplied code or examples carries
 the applicable upstream obligations; this repository does not relicense an
@@ -31,7 +39,10 @@ and their NOTICE.txt files identify the attribution. Their page versions are
 0.1.1. They are new public example sources; they do not retroactively change
 the identity or license metadata of an earlier privately circulated archive.
 
-The offline tools use Python's standard library and bundle no third-party
+The profile tools use Python's standard library and bundle no third-party
 runtime library, font, image or SDK. Dependencies added in future contributions
 must carry their actual license and required notices. No marketing asset or
 private operational document is part of this distribution.
+The full repository test suite also uses Git, and online central admission
+uses GitHub CLI with server-held access to the private repository. No GitHub
+credential belongs in a page.

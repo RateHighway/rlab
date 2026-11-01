@@ -3,8 +3,10 @@
 An independent `.rlab` host lets users build tools against contracts your
 application publishes. Your application supplies identity, permissions,
 supported display surfaces and authorized data or actions. Its implementation
-can use your existing stack; RME and a RateHighway-operated gateway are not
-technical prerequisites.
+can use your existing stack. RME and a RateHighway-operated data gateway are
+not technical prerequisites. The official ecosystem now separately requires
+central registration and deployment reporting under
+[`RLAB-CENTRAL-ADMISSION-1`](central-registration.md).
 
 Start with one useful read-only path and synthetic data. This repository
 provides contracts and checking tools, not a ready-to-deploy host.
@@ -33,7 +35,8 @@ smaller set than the capabilities a host could potentially provide.
 | --- | --- |
 | Capability catalogue | Describe supported profiles, versions, contracts, limits and meanings |
 | Importer | Inspect untrusted archives without running their code |
-| Installation registry | Store immutable digests, approvals, assignments and lifecycle state |
+| Central admission and deployment inventory | Verify central registration, current host permission, approval, deployment purpose and lease; report lifecycle changes |
+| Local installation registry | Store immutable digests, customer grants, assignments and runtime/session state |
 | Runtime | Render supported native components or launch an isolated browser page |
 | Data/action broker | Recheck current authority and call known adapters |
 | Operations | Audit changes, diagnose safely, suspend releases and restore service |
@@ -60,8 +63,29 @@ file/directory collisions and prohibited content. Never execute an archive's
 build or installation scripts. Offline validation precedes dependency review,
 secret/malware checks, browser tests and installation approval.
 
-Preview the exact digest with synthetic data. Store approval for those bytes,
-then activate an immutable installation atomically. Stage updates alongside
+For an official/governed host, submit the exact compiled package and source
+ZIP to the private `RateHighway/rlab-pages` archive. Obtain a registration
+binding the package/source digests and a deployment record for the specific
+host installation and placement. `allowedHosts`, current registration state,
+approved/active deployment status, purpose and an unexpired lease must permit
+the requested use. A structurally valid package alone cannot be installed,
+enabled or rendered. See the [central registration contract](central-registration.md).
+
+The browser profile must use bundled delivery for central admission.
+Remote-URL delivery remains part of the legacy structural schema but cannot
+bind later-served executable bytes to the approved digest and is denied by
+this overlay. Passing the old structural check does not override that denial.
+
+Match the deployment record's host release, application, environment and
+route/slot to the actual runtime before admission. The central CLI requires
+`--host-release`, `--environment`, `--route` and `--slot` and compares them with
+the record. Derive these inputs from the trusted host, not the page. The CLI
+cannot independently observe where your application will render it.
+
+Preview only the permitted exact digest with synthetic data. A 0.3 package
+is limited to `design-review`; it can never receive `display` admission under
+this policy. Store local approval for those bytes, then activate an immutable
+installation atomically. Stage updates alongside
 the current release. Rollback must honor current permissions; it must not
 restore revoked authority merely because an older artifact is restored.
 
@@ -74,6 +98,10 @@ Effective access is the intersection of package declarations, installation
 grants, current user rights, organization entitlements, location restrictions
 and host policy. Evaluate it for every protected request and effect. A
 publisher approval or certification cannot grant customer authority.
+
+Central admission is an additional prerequisite, not a replacement for this
+execution-time authority. Keep private-registry credentials on the host
+server. They must never reach a page, its iframe or host-config endpoint.
 
 Map named query/action contracts to known adapters. Define allowed methods,
 input/output schemas, filters, limits, errors, units and business meaning.
@@ -109,6 +137,13 @@ origin separate from the main application and other installations. A separate
 registrable domain is preferable to avoid parent-domain cookie exposure.
 Host cookies must not reach page origins. The teaching sample requires a
 distinct HTTPS parent origin.
+
+Serve executable assets from the centrally approved package bytes. Enforce
+CSP and other response policies that prevent external scripts,
+`eval`/`Function` execution and remote code imports. An approved manifest must
+not become a loader for changing executable code elsewhere. Fetch business
+data only through authorized host adapters; it is not source archive content
+or central page-view tracking.
 
 Serve `GET /__rlab/host-config.json` on that page origin, outside package
 control. Derive its exact contents from the approved installation registry:
@@ -182,6 +217,23 @@ navigation also ends the session. A malicious page can ignore shutdown; it
 cannot be the enforcement mechanism. Revocation cannot recall data already
 delivered.
 
+Report enable, update and disable transitions to the central inventory, and
+renew active deployment leases. Refresh the current official registry head
+and require the latest same-commit `master` push run of `registry-check.yml`
+to have completed successfully. A missing, pending or failed run denies the
+online check. Git object reads use `--no-replace-objects` to keep local
+replacement refs from overriding the official commit tree.
+
+Online display checks return `checkedAt` and `admissionExpiresAt`, bounded by
+both 15 minutes from the authority check and the deployment lease expiry.
+Refresh before that deadline; a cached result cannot extend it. Stop admitting
+and using affected pages if current
+central authority cannot be refreshed within 15 minutes, or immediately when
+it shows revocation, removed host permission, a disabled/unapproved deployment,
+digest mismatch or lease expiry. A lease spans at most 24 hours; it does not
+permit 24 hours of stale central policy. A saved checkout or an offline
+validation result cannot extend admission.
+
 Audit installation, grants, activation, launch, denial, update, rollback,
 suspension and uninstall using safe identifiers and trace IDs. Avoid tokens,
 personal records and unnecessary business payloads in logs. Define support,
@@ -205,6 +257,13 @@ The supplied 0.3 examples describe these abilities but implement none of
 those runtime facilities.
 
 ## Prove the integration
+
+Test central registration absence, wrong package/source digests, a host not
+listed in `allowedHosts`, wrong deployment placement or purpose, pending or
+denied approval, disabled state, expired leases, revoked registrations and
+failure to refresh official authority within 15 minutes. Prove that a design-only
+0.3 package cannot enter the display path. Verify that lifecycle reporting
+contains operational placement metadata and no user/customer tracking data.
 
 Test allowed and restricted users in two synthetic tenants. Attempt forged
 IDs, location escalation, stale grants, wrong token audiences, changed

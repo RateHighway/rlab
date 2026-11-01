@@ -1,5 +1,11 @@
 # Create a RevenueLab Page
 
+Official host use requires [central registration](central-registration.md).
+After building and checking a page, submit its exact package and source archive
+to the private `RateHighway/rlab-pages` repository. An authorized central host
+placement and successful admission check are required before display; a local
+`offline-passed` or `design-checked` report does not grant that permission.
+
 A useful first page answers one small business question, explains its limits
 and asks for little access. This guide uses a synthetic fleet snapshot. It
 offers two paths: a checked declarative design and the separate compiled

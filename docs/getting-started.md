@@ -30,13 +30,20 @@ implementation.
 
 ## Run the source checks
 
-Use a supported Python 3 release. The supplied checking tools use the standard
-library and need no third-party package installation. From the repository
+Use Python 3.11 or newer and Git for the full test suite. The Python tools use
+the standard library and need no third-party package installation. Online
+central admission also requires authenticated GitHub CLI access to the private
+central repository. From the repository
 root, run the repository checks:
 
 ```sh
 python -B tools/check_repository.py
 ```
+
+These are offline source checks, not host admission. For official host use,
+every page package and source archive must be retained centrally, and each
+application placement must pass [central admission](central-registration.md)
+before it is enabled or displayed.
 
 To inspect one profile separately, change into its directory. For the browser
 example:

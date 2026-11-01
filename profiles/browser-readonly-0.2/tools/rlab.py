@@ -18,7 +18,8 @@ LIMITS = dict(compressedBytes=25000000, expandedBytes=100000000,
               fileBytes=25000000, entries=2000, pathCharacters=240)
 ALLOWED = {'.json', '.html', '.css', '.js', '.mjs', '.png', '.jpg', '.jpeg',
            '.webp', '.gif', '.ico', '.woff', '.woff2', '.txt', '.md', '.csv'}
-NOT_PERFORMED = ['Browser/runtime conformance', 'Publisher identity or licence verification',
+NOT_PERFORMED = ['Central registration and host deployment admission',
+                 'Browser/runtime conformance', 'Publisher identity or licence verification',
                  'Malware/dependency/complete secret scanning', 'Remote URL/header/deployment checks',
                  'Gateway authorisation and cross-tenant tests', 'Certification assessment']
 
@@ -234,7 +235,8 @@ def check_semantics(m, names, host, measured, warnings):
 
 def validate(path, host=None):
     result = dict(status='invalid', standardVersion='0.2', sha256=None, errors=[], warnings=[],
-                  notPerformed=NOT_PERFORMED, validator='rlab-reference-0.2.0')
+                  notPerformed=NOT_PERFORMED, validator='rlab-reference-0.2.0',
+                  centralRegistration='not-checked', admissionEligible=False)
     try:
         path = pathlib.Path(path)
         size = path.stat().st_size

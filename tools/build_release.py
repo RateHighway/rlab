@@ -39,6 +39,8 @@ def build(output):
     page = json.loads((folder / 'rlab-page.json').read_text(encoding='utf-8'))
     artifact = output / f"fleet-pressure-{page['version']}.rlab"
     run_json(browser / 'tools/rlab.py', 'pack', folder, artifact)
+    zip_files(output / f"fleet-pressure-{page['version']}-source.zip",
+              [(p.relative_to(folder).as_posix(), p) for p in source_files(folder)])
     report = run_json(browser / 'tools/rlab.py', 'validate', artifact,
                       '--host', browser / 'examples/host-capabilities.json')
     reports.append(dict(report, artifact=artifact.name, runtimeExecuted=False))
@@ -52,6 +54,8 @@ def build(output):
         artifact = output / f"fleet-review-level-{level}-{page['version']}-design.rlab"
         names = set(report['checkedFiles']) | {'README.md', 'LICENSE.txt', 'NOTICE.txt'}
         zip_files(artifact, [(name, folder / name) for name in names])
+        zip_files(output / f"fleet-review-level-{level}-{page['version']}-source.zip",
+                  [(p.relative_to(folder).as_posix(), p) for p in source_files(folder)])
         reports.append(dict(report, artifact=artifact.name, sha256=digest(artifact),
                             runtimeExecuted=False))
     write_json(output / 'check-reports.json', reports)
@@ -62,6 +66,7 @@ def build(output):
     manifest = {
         'manifestVersion': 1, 'repositoryVersion': VERSION, 'maturity': 'draft',
         'sourceCommit': own_git_revision(), 'runtimeExecuted': False,
+        'centralRegistration': 'not-checked', 'admissionEligible': False,
         'environment': {'python': platform.python_version(), 'zlib': zlib.ZLIB_RUNTIME_VERSION},
         'sourceFiles': [{'path': p.relative_to(ROOT).as_posix(), 'sha256': digest(p)}
                         for p in sources],

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0 - Central registration and host admission
+
+- Required `RLAB-CENTRAL-ADMISSION-1` for official host admission, with centrally
+  archived page packages/source and leased host placement records.
+- Registration/deployment schemas, an authoritative-head admission checker and
+  offline central-repository audit. Existing structural checks explicitly
+  report that central admission was not performed.
+- Per-page source archives in release builds. Existing page profile IDs,
+  closed manifest grammars and 0.1.1 reference package versions are preserved.
+- Public implementation rights remain Apache-2.0; host operation under the
+  official central policy now requires registration. No runtime host is added.
+
 ## 0.1.0 - Initial public source snapshot
 
 - Public technical source for the Draft 0.2 read-only browser profile and

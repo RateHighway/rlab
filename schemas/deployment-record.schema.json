@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Central .rlab deployment record, policy 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["recordVersion", "deploymentId", "pageId", "pageVersion", "packageSha256", "hostId", "hostRelease", "applicationName", "environment", "placement", "purpose", "status", "approval", "reportedAt", "leaseExpiresAt"],
+  "properties": {
+    "recordVersion": {"const": 1},
+    "deploymentId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "pageId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "pageVersion": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"},
+    "packageSha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "hostId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "hostRelease": {"type": "string", "minLength": 1, "maxLength": 128},
+    "applicationName": {"type": "string", "minLength": 1, "maxLength": 128},
+    "environment": {"enum": ["development", "staging", "production"]},
+    "placement": {
+      "type": "object", "additionalProperties": false, "required": ["route", "slot"],
+      "properties": {
+        "route": {"type": "string", "minLength": 1, "maxLength": 240, "pattern": "^/[^?#]*$"},
+        "slot": {"type": "string", "minLength": 1, "maxLength": 80}
+      }
+    },
+    "purpose": {"enum": ["display", "design-review"]},
+    "status": {"enum": ["active", "disabled"]},
+    "approval": {"enum": ["approved", "pending", "denied"]},
+    "reportedAt": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "leaseExpiresAt": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"}
+  }
+}

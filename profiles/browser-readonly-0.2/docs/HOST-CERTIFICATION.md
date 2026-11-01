@@ -1,5 +1,7 @@
 # RevenueLab host compatibility and certification
 
+**Official host admission:** apply [RLAB-CENTRAL-ADMISSION-1](../../../docs/central-registration.md) in addition to this profile. Centrally retain every page package and source, record its host placements, and verify current central admission before display. The existing closed manifest grammar is unchanged; design-only content remains non-executable.
+
 **Programme design | Draft Standard | 2026-10-02**
 
 ## Badge recommendation

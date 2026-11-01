@@ -4,6 +4,9 @@
 | --- | --- |
 | [README.md](README.md) | Overview, maturity and quickstart |
 | [catalog.json](catalog.json) | Generated profile, schema, example and tool paths with digests |
+| [docs/central-registration.md](docs/central-registration.md) | Mandatory central package/source retention, host placement inventory and admission policy |
+| [schemas/registration-record.schema.json](schemas/registration-record.schema.json), [schemas/deployment-record.schema.json](schemas/deployment-record.schema.json) | Central record contracts, separate from closed page manifests |
+| [tools/validate_registered_page.py](tools/validate_registered_page.py) | Authoritative central admission and offline repository audit |
 | [profiles/browser-readonly-0.2/](profiles/browser-readonly-0.2/) | Read-only browser profile source, schemas, sample and tools |
 | [profiles/declarative-design-0.3/](profiles/declarative-design-0.3/) | Design-only declarative profile source, schemas and four examples |
 | [docs/getting-started.md](docs/getting-started.md) | Builder and host entry points |

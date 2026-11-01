@@ -55,11 +55,15 @@ def check_examples():
                           '--host', browser / 'examples/host-capabilities.json')
         if report['status'] != 'offline-passed':
             raise ValueError('Browser example did not pass offline checks')
+        if report['admissionEligible'] is not False:
+            raise ValueError('An offline package check cannot grant central admission')
     design = ROOT / 'profiles/declarative-design-0.3'
     for level in range(1, 5):
         report = run_json(design / 'tools/check_design.py', design / f'examples/level-{level}')
         if report['status'] != 'design-checked':
             raise ValueError('Declarative fixture did not pass design checks')
+        if report['admissionEligible'] is not False:
+            raise ValueError('A design check cannot grant central admission')
 
 
 def main():

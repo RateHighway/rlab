@@ -6,9 +6,16 @@ capabilities as named, versioned contracts, and make host-specific
 requirements explicit.
 
 Independent hosts can use their own identity, broker, adapters and customer
-permissions. Supporting `.rlab` does not require an RME purchase or a central
-RateHighway service. Access to a particular operated service remains a
-separate admission, entitlement and authorization decision.
+permissions. An RME purchase remains unnecessary. The official ecosystem now
+requires central registration and deployment reporting through
+[`RLAB-CENTRAL-ADMISSION-1`](central-registration.md), including official and
+RateHighway-approved hosts. This changes the earlier decentralized operational
+direction. Access to business data and operated services remains a separate
+entitlement and authorization decision.
+
+Apache-2.0 reuse rights are unchanged. This operational policy cannot require
+every independent implementation or fork to report, or establish visibility
+into unreported use.
 
 ## Separate the contracts
 
@@ -20,6 +27,7 @@ separate admission, entitlement and authorization decision.
 | Host API | The runtime conversation an application implements, such as `0.2.0` |
 | Service or UI contract | The meaning of a named operation or component |
 | Page version | The builder's own package release |
+| Central admission overlay | Registration, current host permission, deployment purpose/approval and lease requirements for official participation |
 
 The browser bridge's protocol string `"0.2"` and host API version `"0.2.0"`
 are different fields. Preserve the supplied values and compare according to
@@ -45,6 +53,19 @@ These boundaries prevent a host from silently interpreting unknown data as
 code or authority. Do not weaken a schema or put executable behavior inside
 metadata to bypass them. A new runtime feature requires an explicitly
 versioned profile/schema and corresponding implementation tests.
+
+The central overlay does not amend either existing manifest schema. Keep
+registration and deployment records in their central paths instead of adding
+admission fields to `rlab-page.json`. A central record cannot make an
+unsupported capability portable or turn the design-only 0.3 profile into an
+executable display profile.
+
+The overlay also narrows browser admission to bundled delivery. Legacy
+remote-URL delivery can pass structural checks but is denied centrally because
+its manifest/package hash does not bind future executable responses. Official
+hosts serve approved package assets and enforce CSP against external code,
+dynamic evaluation and remote imports. Dynamic business data remains under
+the host's authorized data contracts and is not retained as page source.
 
 ## Specify a reusable capability
 
@@ -85,6 +106,11 @@ rights. A page requiring it is compatible only with hosts implementing that
 contract. Independent implementation is valuable even when a particular page
 does not target every host.
 
+For use in a governed host, the page still needs central registration of its
+exact compiled package and source ZIP and a matching approved deployment.
+Private central storage does not grant permission to upload someone else's
+proprietary source. Archive only material the submitter has rights to provide.
+
 ## Publish evidence that others can reproduce
 
 State compatibility for a named host release and exact profile. Identify the
@@ -94,6 +120,7 @@ limitations. Distinguish these claims:
 | Claim | What it establishes |
 | --- | --- |
 | Offline validation passed | The particular checker accepted the archive or design documents under the rules it implements |
+| Central admission checked | Current official registration and deployment records permit the requested host, artifact and purpose within the policy's freshness and lease limits |
 | Host compatibility tested | A specified package worked with a specified host release and contract set in documented tests |
 | Cross-host portability demonstrated | The same immutable artifact and fixtures produced matching relevant results and denials in identified independent hosts |
 | Certification issued | A designated issuer separately assessed and issued a scoped record under an actual certification process |
@@ -102,6 +129,18 @@ A schema pass does not prove tenant isolation, correct business calculations,
 runtime behavior, publisher identity or a secure deployment. A certification
 concept or badge image does not issue a certificate. Describe self-published
 evidence as such, and use certification wording only when actually authorized.
+
+An offline central review is not central admission and always leaves
+`admissionEligible: false`. Host-reported deployment inventory is evidence of
+what cooperating hosts report, not every independent page view. Source and
+package hashes also do not by themselves prove a reproducible build between
+the two archives.
+
+Online admission additionally requires a successful latest same-commit
+`registry-check.yml` push run on official `master`. Git reads disable local
+replacement objects. An online display result includes its bounded
+`admissionExpiresAt`; consumer caches cannot extend that deadline or substitute
+an older successful workflow revision for the current authority check.
 
 ## Evolve without replacing released bytes
 

@@ -1,6 +1,27 @@
 {
-  "catalogVersion": 1,
-  "repositoryVersion": "0.1.0",
+  "catalogVersion": 2,
+  "repositoryVersion": "0.2.0",
+  "centralAdmission": {
+    "id": "RLAB-CENTRAL-ADMISSION-1",
+    "requiredFor": "official registered-host admission",
+    "repository": "https://github.com/RateHighway/rlab-pages",
+    "visibility": "private",
+    "branch": "master",
+    "validator": {
+      "path": "tools/validate_registered_page.py",
+      "sha256": "0b076e7da961c9e2577ed6a8df14948c4bbcdd18ea55de29b84e9baa708bb063"
+    },
+    "schemas": [
+      {
+        "path": "schemas/deployment-record.schema.json",
+        "sha256": "59f4edee9d9772839a3381c0ab38545e27ce947d5822b80118c35f72cc611263"
+      },
+      {
+        "path": "schemas/registration-record.schema.json",
+        "sha256": "25152ea97bebc0d8fc4a88c5e1c198d09a6de7c8b8bc46367696e5ddd9ab51ac"
+      }
+    ]
+  },
   "revisionBinding": "enclosing-git-commit",
   "license": "Apache-2.0",
   "maturity": "draft",
@@ -37,7 +58,7 @@
       "tools": [
         {
           "path": "profiles/browser-readonly-0.2/tools/rlab.py",
-          "sha256": "e4c672fcabec59609bbdc6bfc0b03c5361a824d4b84d9eb085431357c77bd008"
+          "sha256": "6ad99fb896eedef37f0ea913b35df61aef583112655f4d4a3920c4b211dfedd6"
         }
       ],
       "files": [
@@ -51,15 +72,15 @@
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/DEVELOPER-GUIDE.md",
-          "sha256": "d248025d767416f7a02aaaf9920da6b354009e4fe64790897480bdcc0e66f8bf"
+          "sha256": "164325feb5f62874f0cd8bdf208cbf14175b9d59129546dfdbe20d0867e383ea"
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/HOST-CERTIFICATION.md",
-          "sha256": "b306baa073b1b9eb1d6ad7c8dd9cee0ce66e261c534ca0804b6cccd1d79d27e1"
+          "sha256": "b26acc0cd0b14872230c0f9086f809f0f78da62b2549c8ee45d54eada015ad39"
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/HOST-INTEGRATION-GUIDE.md",
-          "sha256": "39f9d530d01749ccc607aaaf4bac4c252bd50419527ad75f3101bfb42ac00020"
+          "sha256": "1c5eebb8763d8ca2ac4889876376ea1471e12aaf458917c6694f59a97c10e26f"
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/RLAB-PAGE-STANDARD.md",
@@ -115,7 +136,7 @@
         },
         {
           "path": "profiles/browser-readonly-0.2/tools/rlab.py",
-          "sha256": "e4c672fcabec59609bbdc6bfc0b03c5361a824d4b84d9eb085431357c77bd008"
+          "sha256": "6ad99fb896eedef37f0ea913b35df61aef583112655f4d4a3920c4b211dfedd6"
         }
       ]
     },
@@ -190,7 +211,7 @@
       "tools": [
         {
           "path": "profiles/declarative-design-0.3/tools/check_design.py",
-          "sha256": "4dc506e242200d43f8f406f4f0755fa4745b6a9ae62fb8872ee9d7a14de5954c"
+          "sha256": "eecd039ec0d81dd16a7ec9b32904069abaa3133bb21c9e9de6c7109c51c61519"
         },
         {
           "path": "profiles/declarative-design-0.3/tools/schema_subset.py",
@@ -208,15 +229,15 @@
         },
         {
           "path": "profiles/declarative-design-0.3/docs/ADOPTION-AND-ASSURANCE.md",
-          "sha256": "93d1527838c1219cacdebed57f6f9d1c0299fa25db8ed77fe9c56b6159588cb2"
+          "sha256": "fe6cee1c8861675f8b553e044f6226a7d6787d15dd0ebd71843396fa405c933e"
         },
         {
           "path": "profiles/declarative-design-0.3/docs/BUILDER-AND-HOST-GUIDE.md",
-          "sha256": "bb26d9e03f6adca983d6c750db8f0793915814c1d827a7ec6d0ccac6d34be2c8"
+          "sha256": "17014f2e0ab781e81390858691a740a1ef880a33965dbc772af18930f483081e"
         },
         {
           "path": "profiles/declarative-design-0.3/docs/STANDARD-0.3.md",
-          "sha256": "ea71c6b2add99ed9d85a7ff4bd558fee195fc9d9976075c8c4a831be18d48233"
+          "sha256": "2ec4bcfb569e2b08ee97e6ed12ee42707d02d0bd405dbcde1a628186cb61378e"
         },
         {
           "path": "profiles/declarative-design-0.3/examples/level-1/LICENSE.txt",
@@ -340,7 +361,7 @@
         },
         {
           "path": "profiles/declarative-design-0.3/tools/check_design.py",
-          "sha256": "4dc506e242200d43f8f406f4f0755fa4745b6a9ae62fb8872ee9d7a14de5954c"
+          "sha256": "eecd039ec0d81dd16a7ec9b32904069abaa3133bb21c9e9de6c7109c51c61519"
         },
         {
           "path": "profiles/declarative-design-0.3/tools/schema_subset.py",

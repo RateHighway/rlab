@@ -46,9 +46,11 @@ def unique(items, key, where):
 
 def check(folder, host=None):
     report = {'status':'invalid', 'errors':[], 'warnings':[], 'checkedFiles':[],
+              'centralRegistration':'not-checked', 'admissionEligible':False,
               'notTested':['Package extraction/security', 'UI renderer/browser accessibility',
                            'Action execution/authorisation', 'Workflow runner/recovery',
-                           'Scheduler/mandates', 'Host certification']}
+                           'Scheduler/mandates', 'Host certification',
+                           'Central registration and host deployment admission']}
     try:
         folder = pathlib.Path(folder).resolve()
         host = load_json(ROOT/'fixtures/host-catalog.json') if host is None else host

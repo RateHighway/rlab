@@ -1,5 +1,7 @@
 # Build once against a clear host contract
 
+**Official host admission:** apply [RLAB-CENTRAL-ADMISSION-1](../../../docs/central-registration.md) in addition to this profile. Centrally retain every page package and source, record its host placements, and verify current central admission before display. The existing closed manifest grammar is unchanged; design-only content remains non-executable.
+
 **Draft developer experience and host implementation guide | 0.3**
 
 ## 1. What a builder should experience

@@ -55,6 +55,13 @@ class ReleaseTests(unittest.TestCase):
                              {p.name: p.read_bytes() for p in second.iterdir()})
             packages = list(first.glob('*.rlab'))
             self.assertEqual(len(packages), 5)
+            source_archives = list(first.glob('*-source.zip'))
+            self.assertEqual(len(source_archives), 5)
+            for source in source_archives:
+                with zipfile.ZipFile(source) as archive:
+                    self.assertIn('rlab-page.json', archive.namelist())
+                    self.assertEqual(json.loads(archive.read('rlab-page.json'))['version'], '0.1.1')
+            self.assertIs(a['admissionEligible'], False)
             for package in packages:
                 with zipfile.ZipFile(package) as archive:
                     self.assertEqual(archive.read('LICENSE.txt'), (ROOT / 'LICENSE').read_bytes())

@@ -1,6 +1,6 @@
 # Releases and reproducible consumption
 
-The initial source snapshot is repository version `0.1.0`. It includes
+The central-registration source snapshot is repository version `0.2.0`. It includes
 standard version `0.2`, standard version `0.3` and synthetic example page
 version `0.1.1`. These versions identify different contracts.
 
@@ -16,7 +16,7 @@ From a reviewed source checkout:
 
 ```sh
 python -B tools/check_repository.py
-python -B tools/build_release.py --output build/release-0.1.0
+python -B tools/build_release.py --output build/release-0.2.0
 ```
 
 Use a new output directory for every attempt. The builder refuses an existing
@@ -25,7 +25,9 @@ the five examples and writes:
 
 - The read-only browser example `.rlab` archive.
 - Four declarative design `.rlab` archives, which remain non-executable.
-- Profile check reports and `rlab-source-0.1.0.zip`.
+- A source ZIP for each page, with its manifest at the archive root, for
+  submission to the central repository alongside the exact `.rlab` package.
+- Profile check reports and `rlab-source-0.2.0.zip`.
 - `release-manifest.json` containing digests, source-file hashes and the
   source commit when building from this repository's clean, dedicated Git root.
 - `SHA256SUMS` for all other files in that output directory.
@@ -34,6 +36,11 @@ ZIP entry ordering and timestamps are fixed. Compare repeated-build digests
 in the same tested environment; compression-library differences can affect
 compressed bytes. The manifest records the Python and zlib versions. A
 checksum binds bytes; it is not an independent publisher signature.
+
+Building an artifact does not register it or authorize a host to display it.
+Follow [central registration](central-registration.md): retain the package and
+source in `RateHighway/rlab-pages`, then obtain an authorized host placement.
+Source retention alone does not establish that a binary was built from it.
 
 `catalog.json` is generated from profile sources. After an intentional source
 change, run `python -B tools/update_catalog.py`, review its diff and commit it

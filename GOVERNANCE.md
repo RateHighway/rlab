@@ -10,6 +10,33 @@ certification decision does not revoke those rights. Customer authorization
 and RateHighway-operated service admission remain separate from implementing
 the format.
 
+## Required central page and deployment records
+
+The official registered-host ecosystem applies `RLAB-CENTRAL-ADMISSION-1`.
+Every page release must retain its source archive and exact package in the
+private `RateHighway/rlab-pages` repository. Every host placement must have an
+approved, current central deployment record before display. See
+[central registration](docs/central-registration.md) for the validation and
+lifecycle contract.
+
+Maintainers control merges to the central authoritative branch. A submitted
+record is not approved merely because it exists in a contributor's checkout.
+Package/source digest bindings for one page ID and version cannot change;
+revocation, host permissions and deployment state change through reviewed
+commits. New bytes require a new page version. Source access and rights remain
+limited to the submitting parties' grants; private storage is not a public
+license or a certification award.
+
+Hosts report each enable, update and disable, renew bounded deployment leases,
+and enforce current central authorization. No customer data, credentials or
+individual visitor tracking belongs in those records. Revocation prevents
+admission under this policy; it does not cancel Apache-2.0 reuse rights.
+
+This operational requirement supersedes the earlier direction that official
+host operation could omit a central record. Independent format implementation
+rights remain unchanged. Unmanaged forks cannot be compelled to report by
+publishing this specification alone.
+
 ## Core decisions
 
 Submit a public proposal for changes to profile semantics. Include:
