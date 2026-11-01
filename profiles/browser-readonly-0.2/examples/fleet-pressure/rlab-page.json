@@ -1,0 +1,67 @@
+{
+  "$schema": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json",
+  "standard": "rlab.page",
+  "standardVersion": "0.2",
+  "profile": "RLAB-PAGE-READONLY-0.2",
+  "id": "com.example.fleet-pressure",
+  "name": "Fleet Pressure Summary",
+  "description": "Synthetic read-only fleet pressure example for RevenueLab host development.",
+  "version": "0.1.1",
+  "publisher": {
+    "id": "com.example.builder",
+    "name": "Example Builder (sample)"
+  },
+  "hostApi": {
+    "minimum": "0.2.0",
+    "maximumExclusive": "0.3.0"
+  },
+  "delivery": {
+    "mode": "bundle",
+    "entry": "app/index.html"
+  },
+  "display": {
+    "mode": "workspace",
+    "themeAware": false
+  },
+  "permissions": {
+    "requested": [
+      "context.read"
+    ],
+    "required": [
+      "context.read"
+    ]
+  },
+  "context": {
+    "required": [
+      "environment"
+    ],
+    "optional": [
+      "locale"
+    ]
+  },
+  "services": [],
+  "events": {
+    "subscribe": [
+      "context.changed"
+    ],
+    "publish": []
+  },
+  "network": {
+    "connect": []
+  },
+  "dataHandling": {
+    "externalProcessing": false,
+    "retention": "none",
+    "personalData": "not-requested"
+  },
+  "support": {
+    "owner": "Example Builder (sample)",
+    "url": "https://example.com/support"
+  },
+  "license": {
+    "status": "open-source",
+    "file": "LICENSE.txt",
+    "identifier": "Apache-2.0"
+  },
+  "extensions": {}
+}

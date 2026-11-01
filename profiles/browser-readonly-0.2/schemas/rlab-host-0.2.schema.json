@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RevenueLab Host Capabilities 0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hostId",
+    "name",
+    "standardVersions",
+    "profiles",
+    "hostApiVersion",
+    "deliveryModes",
+    "permissions",
+    "contextKeys",
+    "services",
+    "limits",
+    "documentationUrl",
+    "supportUrl"
+  ],
+  "properties": {
+    "hostId": {
+      "$ref": "#/$defs/reverseDomainId"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "standardVersions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "const": "0.2"
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "const": "RLAB-PAGE-READONLY-0.2"
+      }
+    },
+    "hostApiVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "deliveryModes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "bundle",
+          "remote"
+        ]
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "context.read",
+          "locations.read",
+          "vehicle-classes.read",
+          "rate-observations.read",
+          "own-rates.read",
+          "utilization.read",
+          "rate-change-history.read",
+          "reservation-pace.read",
+          "alerts.read"
+        ]
+      }
+    },
+    "contextKeys": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "tenant",
+          "user",
+          "roles",
+          "locations",
+          "rental-period",
+          "vehicle-classes",
+          "channel",
+          "currency",
+          "locale",
+          "timezone",
+          "environment",
+          "capabilities"
+        ]
+      }
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/reverseDomainId"
+          },
+          "version": {
+            "$ref": "#/$defs/semanticVersion"
+          }
+        }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compressedBytes",
+        "expandedBytes",
+        "fileBytes",
+        "entries",
+        "pathCharacters"
+      ],
+      "properties": {
+        "compressedBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25000000
+        },
+        "expandedBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000000
+        },
+        "fileBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25000000
+        },
+        "entries": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2000
+        },
+        "pathCharacters": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 240
+        }
+      }
+    },
+    "documentationUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "supportUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    }
+  },
+  "$defs": {
+    "reverseDomainId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "pattern": "^[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "contextKey": {
+      "type": "string",
+      "enum": [
+        "tenant",
+        "user",
+        "roles",
+        "locations",
+        "rental-period",
+        "vehicle-classes",
+        "channel",
+        "currency",
+        "locale",
+        "timezone",
+        "environment",
+        "capabilities"
+      ]
+    },
+    "eventName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+    }
+  }
+}

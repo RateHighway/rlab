@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "automationVersion",
+    "workflow",
+    "activation",
+    "initialMode",
+    "trigger"
+  ],
+  "properties": {
+    "automationVersion": {
+      "const": "0.3.0"
+    },
+    "workflow": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9./-]*\\.json$",
+      "maxLength": 240
+    },
+    "activation": {
+      "const": "requires-host-mandate"
+    },
+    "initialMode": {
+      "const": "shadow"
+    },
+    "trigger": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "localTime",
+            "timezone",
+            "missed",
+            "ambiguous",
+            "nonexistent"
+          ],
+          "properties": {
+            "kind": {
+              "const": "daily"
+            },
+            "localTime": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+            },
+            "timezone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "missed": {
+              "const": "skip"
+            },
+            "ambiguous": {
+              "const": "skip"
+            },
+            "nonexistent": {
+              "const": "skip"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "contract",
+            "minimum",
+            "maximumExclusive"
+          ],
+          "properties": {
+            "kind": {
+              "const": "event"
+            },
+            "contract": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+            },
+            "minimum": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+            },
+            "maximumExclusive": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,306 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "standard",
+    "standardVersion",
+    "profile",
+    "stage",
+    "id",
+    "name",
+    "description",
+    "version",
+    "publisher",
+    "support",
+    "license",
+    "capabilityLevel",
+    "hostApi",
+    "runtime",
+    "surfaces",
+    "permissions",
+    "queries",
+    "actions"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+    },
+    "standard": {
+      "const": "rlab.page"
+    },
+    "standardVersion": {
+      "const": "0.3"
+    },
+    "profile": {
+      "const": "RLAB-DECLARATIVE-DESIGN-0.3"
+    },
+    "stage": {
+      "const": "design-only"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "url"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^https://"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "unspecified",
+            "customer-private",
+            "open-source",
+            "commercial"
+          ]
+        }
+      }
+    },
+    "capabilityLevel": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4
+    },
+    "hostApi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum",
+        "maximumExclusive"
+      ],
+      "properties": {
+        "minimum": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "maximumExclusive": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "uiContract"
+      ],
+      "properties": {
+        "kind": {
+          "const": "declarative"
+        },
+        "uiContract": {
+          "const": "0.3.0"
+        }
+      }
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot",
+          "required",
+          "entry"
+        ],
+        "properties": {
+          "slot": {
+            "enum": [
+              "workspace",
+              "dashboard-card",
+              "record-panel",
+              "list-action",
+              "command"
+            ]
+          },
+          "required": {
+            "const": true
+          },
+          "entry": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9./-]*\\.json$",
+            "maxLength": 240
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested"
+      ],
+      "properties": {
+        "requested": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "queries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "contract",
+          "minimum",
+          "maximumExclusive",
+          "inputBindings"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "maxLength": 60
+          },
+          "contract": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+          },
+          "minimum": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          },
+          "maximumExclusive": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          },
+          "inputBindings": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "maxItems": 20
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "contract",
+          "minimum",
+          "maximumExclusive",
+          "inputBindings"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "maxLength": 60
+          },
+          "contract": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+          },
+          "minimum": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          },
+          "maximumExclusive": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+          },
+          "inputBindings": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        }
+      },
+      "maxItems": 20
+    },
+    "workflow": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9./-]*\\.json$",
+      "maxLength": 240
+    },
+    "automation": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9./-]*\\.json$",
+      "maxLength": 240
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

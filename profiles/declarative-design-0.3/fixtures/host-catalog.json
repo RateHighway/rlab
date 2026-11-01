@@ -1,0 +1,79 @@
+{
+  "catalogVersion": "0.3.0",
+  "status": "synthetic-fixture",
+  "hostApiVersion": "0.3.0",
+  "standardVersions": [
+    "0.3"
+  ],
+  "maxLevel": 4,
+  "runtimes": [
+    "declarative"
+  ],
+  "uiContracts": [
+    "0.3.0"
+  ],
+  "surfaces": [
+    "workspace"
+  ],
+  "contextKeys": [
+    "locations",
+    "rental-period",
+    "currency",
+    "timezone"
+  ],
+  "permissions": [
+    "context.read",
+    "utilization.read",
+    "review-tasks.create"
+  ],
+  "queries": [
+    {
+      "id": "com.example.fleet-summary",
+      "version": "1.0.0",
+      "requiredPermissions": [
+        "context.read",
+        "utilization.read"
+      ],
+      "requiredInputs": [
+        "locationIds"
+      ],
+      "fields": [
+        "location",
+        "class",
+        "rentableUnits",
+        "committedUnits"
+      ],
+      "modes": [
+        "user",
+        "workflow",
+        "automation"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "com.example.review-tasks.create",
+      "version": "1.0.0",
+      "requiredPermissions": [
+        "review-tasks.create"
+      ],
+      "requiredInputs": [
+        "locationIds",
+        "title"
+      ],
+      "risk": "low",
+      "modes": [
+        "user",
+        "workflow",
+        "automation"
+      ]
+    }
+  ],
+  "approvalPolicies": [
+    "com.example.manager-review"
+  ],
+  "timezones": [
+    "Europe/London"
+  ],
+  "events": []
+}

@@ -1,0 +1,30 @@
+{
+  "workflowVersion": "0.3.0",
+  "name": "Fleet review",
+  "onFailure": "pause",
+  "deadlineSeconds": 3600,
+  "steps": [
+    {
+      "id": "read-fleet",
+      "type": "query",
+      "binding": "fleet",
+      "dependsOn": []
+    },
+    {
+      "id": "review",
+      "type": "approval",
+      "policyRef": "com.example.manager-review",
+      "dependsOn": [
+        "read-fleet"
+      ]
+    },
+    {
+      "id": "create-task",
+      "type": "action",
+      "binding": "create-task",
+      "dependsOn": [
+        "review"
+      ]
+    }
+  ]
+}

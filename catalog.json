@@ -1,0 +1,352 @@
+{
+  "catalogVersion": 1,
+  "repositoryVersion": "0.1.0",
+  "revisionBinding": "enclosing-git-commit",
+  "license": "Apache-2.0",
+  "maturity": "draft",
+  "profiles": [
+    {
+      "id": "RLAB-PAGE-READONLY-0.2",
+      "standardVersion": "0.2",
+      "maturity": "draft",
+      "runtimeStatus": "browser-page-source; host implementation required",
+      "root": "profiles/browser-readonly-0.2",
+      "schemas": [
+        {
+          "path": "profiles/browser-readonly-0.2/schemas/rlab-host-0.2.schema.json",
+          "sha256": "42410de4863d7cddbc20a5bd50f4e2e87e44d047a3549423a3760a9d31487d00",
+          "id": null,
+          "documentSchemaIdentifier": null
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/schemas/rlab-page-manifest-0.2.schema.json",
+          "sha256": "ea304991e6cf82c16e3eea062eeca408085889dd60d759d98dfe20f17db197c4",
+          "id": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json",
+          "documentSchemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json"
+        }
+      ],
+      "examples": [
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/rlab-page.json",
+          "sha256": "20a6991e4a326e215a4f8bf37bdd4671b49c25d7d158a3e0ef14073e5b631343",
+          "pageId": "com.example.fleet-pressure",
+          "pageVersion": "0.1.1",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json"
+        }
+      ],
+      "tools": [
+        {
+          "path": "profiles/browser-readonly-0.2/tools/rlab.py",
+          "sha256": "e4c672fcabec59609bbdc6bfc0b03c5361a824d4b84d9eb085431357c77bd008"
+        }
+      ],
+      "files": [
+        {
+          "path": "profiles/browser-readonly-0.2/README.md",
+          "sha256": "5e76841fde206e154119b8c11b20ef889f8cc73d3a7901ec36fe561a810521ae"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/docs/DECISIONS-AND-SOURCES.md",
+          "sha256": "8c8821be05b53444d8ac609989d9545501977a6a27449be6c8d65fd0fcc91b56"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/docs/DEVELOPER-GUIDE.md",
+          "sha256": "d248025d767416f7a02aaaf9920da6b354009e4fe64790897480bdcc0e66f8bf"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/docs/HOST-CERTIFICATION.md",
+          "sha256": "b306baa073b1b9eb1d6ad7c8dd9cee0ce66e261c534ca0804b6cccd1d79d27e1"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/docs/HOST-INTEGRATION-GUIDE.md",
+          "sha256": "39f9d530d01749ccc607aaaf4bac4c252bd50419527ad75f3101bfb42ac00020"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/docs/RLAB-PAGE-STANDARD.md",
+          "sha256": "a04245f39fdb8463ac7a3423e8f0aa76af747417b2214b1266fa18f9ec09b7b7"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/README.md",
+          "sha256": "0e0307821d4f97ad7a2c0fb1820c9580668203fff3a474c22e01e10c531c0cd4"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/app/assets/page.css",
+          "sha256": "90b38634574f0e4153a47a44901b429f9bc3c2f19b40931a6f7c1bb6834c9618"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/app/assets/page.js",
+          "sha256": "d549e111cd50c5c35422e597ae0cff4ffae8b9c718565cc8d29e9b3ffbbb5250"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/app/index.html",
+          "sha256": "d3bb6e67a08a4525e1cfe9e34c07d862bab3dd1dccc2d43c9d32121f6d3aeaf9"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/fleet-pressure/rlab-page.json",
+          "sha256": "20a6991e4a326e215a4f8bf37bdd4671b49c25d7d158a3e0ef14073e5b631343"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/examples/host-capabilities.json",
+          "sha256": "2309fc13c96e705a509bf454733a2ab39d69b3cc62c395d15248ff5a52c46d27"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/requirements.txt",
+          "sha256": "adc9b8b95fa19d2a39d605a300241cf767ce34b2053b60f809b2abb0a4205a2e"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/schemas/rlab-host-0.2.schema.json",
+          "sha256": "42410de4863d7cddbc20a5bd50f4e2e87e44d047a3549423a3760a9d31487d00"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/schemas/rlab-page-manifest-0.2.schema.json",
+          "sha256": "ea304991e6cf82c16e3eea062eeca408085889dd60d759d98dfe20f17db197c4"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/tests/test_rlab.py",
+          "sha256": "33dc8a5ff22227228e0cdb6ab75af329505a4f49daca4c92446dd234a1732219"
+        },
+        {
+          "path": "profiles/browser-readonly-0.2/tools/rlab.py",
+          "sha256": "e4c672fcabec59609bbdc6bfc0b03c5361a824d4b84d9eb085431357c77bd008"
+        }
+      ]
+    },
+    {
+      "id": "RLAB-DECLARATIVE-DESIGN-0.3",
+      "standardVersion": "0.3",
+      "maturity": "draft",
+      "runtimeStatus": "design-only; no runtime",
+      "root": "profiles/declarative-design-0.3",
+      "schemas": [
+        {
+          "path": "profiles/declarative-design-0.3/schemas/automation.schema.json",
+          "sha256": "7f58fcf1e61432f9f3ad94598b107d8650eb1fc0834c5af1f82d60d124f38e5c",
+          "id": null,
+          "documentSchemaIdentifier": null
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/binding.schema.json",
+          "sha256": "5c631a30084b2c4a8d618353f379087be372d552e51f8d66205573e973a47888",
+          "id": null,
+          "documentSchemaIdentifier": null
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/manifest.schema.json",
+          "sha256": "c3d4dfd4081c6d150bdf44ce3c470752fa060f0cefe0c44f1c39321ff46304bd",
+          "id": null,
+          "documentSchemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/ui.schema.json",
+          "sha256": "d4741660153a03c9e5dc192546caa8fdb7041c7b6938ca272f6052aba2001e79",
+          "id": null,
+          "documentSchemaIdentifier": null
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/workflow.schema.json",
+          "sha256": "7a4657c6d100489b88badf1f23ad9d5ffafa3805777fb7c8301067228eb81549",
+          "id": null,
+          "documentSchemaIdentifier": null
+        }
+      ],
+      "examples": [
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/rlab-page.json",
+          "sha256": "20b242b4949979b33eddfd8f439d8ed82cb1264332af59738e00b740cd21eee2",
+          "pageId": "com.example.fleet-review.level1",
+          "pageVersion": "0.1.1",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/rlab-page.json",
+          "sha256": "568a0d8d1d242f7b1f7da77d6955d7a38c6a5826e83a2b29d2682f71f76bcabb",
+          "pageId": "com.example.fleet-review.level2",
+          "pageVersion": "0.1.1",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/rlab-page.json",
+          "sha256": "5d9814fbcc4128f4baa3abddd3a64a27c50d583ef42d23b43bc00c81c8ab1fdb",
+          "pageId": "com.example.fleet-review.level3",
+          "pageVersion": "0.1.1",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/rlab-page.json",
+          "sha256": "53063e6e2203ef5467a7365b836ff4a1c20c31842d5cd527de82b1091db24bc1",
+          "pageId": "com.example.fleet-review.level4",
+          "pageVersion": "0.1.1",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json"
+        }
+      ],
+      "tools": [
+        {
+          "path": "profiles/declarative-design-0.3/tools/check_design.py",
+          "sha256": "4dc506e242200d43f8f406f4f0755fa4745b6a9ae62fb8872ee9d7a14de5954c"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/tools/schema_subset.py",
+          "sha256": "a70f862e8614826cbff84ba26e02cfb2c855857f11495f59ff8f4f39ffe06840"
+        }
+      ],
+      "files": [
+        {
+          "path": "profiles/declarative-design-0.3/README.md",
+          "sha256": "f9df545c9abd285cdbbc0a07fd3a9cd4402205bb17b2d1bbe75dba94e74fa91e"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/docs/ACTIONS-AND-AUTOMATION.md",
+          "sha256": "1fdeb432552cbfddc195e812490cf1df2d06cfbad342d9e21af4c303cd38b6ed"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/docs/ADOPTION-AND-ASSURANCE.md",
+          "sha256": "93d1527838c1219cacdebed57f6f9d1c0299fa25db8ed77fe9c56b6159588cb2"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/docs/BUILDER-AND-HOST-GUIDE.md",
+          "sha256": "bb26d9e03f6adca983d6c750db8f0793915814c1d827a7ec6d0ccac6d34be2c8"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/docs/STANDARD-0.3.md",
+          "sha256": "ea71c6b2add99ed9d85a7ff4bd558fee195fc9d9976075c8c4a831be18d48233"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/README.md",
+          "sha256": "47992ac6fe3ba1299aa55266a130a6b6800c1d31d7c9b2701b2497d310b3cfd0"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/rlab-page.json",
+          "sha256": "20b242b4949979b33eddfd8f439d8ed82cb1264332af59738e00b740cd21eee2"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-1/ui/main.json",
+          "sha256": "34dc791d54ac1d68f4cf15d4d0c9a14286b2e428fa6e7e7d37ce3052d22f440c"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/README.md",
+          "sha256": "90c80341265c60eb22d3bc0418a01ea8b03356e076a26366fa8c26166413a15b"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/rlab-page.json",
+          "sha256": "568a0d8d1d242f7b1f7da77d6955d7a38c6a5826e83a2b29d2682f71f76bcabb"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-2/ui/main.json",
+          "sha256": "bd85d3adc819253d048cc618b5403f49f1a3964e30e3b43f42f3ceaedc2f87c0"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/README.md",
+          "sha256": "b6845cf5603ac22d08dacd0d2a67bc6d8aaf244f3238ea5f9347aaa09aaa7516"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/rlab-page.json",
+          "sha256": "5d9814fbcc4128f4baa3abddd3a64a27c50d583ef42d23b43bc00c81c8ab1fdb"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/ui/main.json",
+          "sha256": "3e2cf186f0aadb0090625402f27531a2546aeeb575e38bd0cdab90d26e7c6f41"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-3/workflows/main.json",
+          "sha256": "76cdbf2b19e78f5ea07d7af63d2cf02df7278c75590c383bc7519ec06d4e07a3"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/README.md",
+          "sha256": "61b1c96e2e1a72741ee734cce768669bdeb27c78caf9bb367d4e07090d2cd02d"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/automation/main.json",
+          "sha256": "2f6a5a993af837d710e1071c2add3375d0ab58cf297e66bbdfc2271b88e53151"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/rlab-page.json",
+          "sha256": "53063e6e2203ef5467a7365b836ff4a1c20c31842d5cd527de82b1091db24bc1"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/ui/main.json",
+          "sha256": "4f02edf4e83fe5dedde4afca58c6d43dd040b12602598733e9f2ddc48dd8f7bb"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/examples/level-4/workflows/main.json",
+          "sha256": "0a6d94183f6608f4f084a52e4b292748c67c3bdadcb87635005da750a72909b7"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/fixtures/host-catalog.json",
+          "sha256": "e87244b132e56c5dcf4da97dd41280294578d30e7950cc16ea77410e6a319309"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/automation.schema.json",
+          "sha256": "7f58fcf1e61432f9f3ad94598b107d8650eb1fc0834c5af1f82d60d124f38e5c"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/binding.schema.json",
+          "sha256": "5c631a30084b2c4a8d618353f379087be372d552e51f8d66205573e973a47888"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/manifest.schema.json",
+          "sha256": "c3d4dfd4081c6d150bdf44ce3c470752fa060f0cefe0c44f1c39321ff46304bd"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/ui.schema.json",
+          "sha256": "d4741660153a03c9e5dc192546caa8fdb7041c7b6938ca272f6052aba2001e79"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/schemas/workflow.schema.json",
+          "sha256": "7a4657c6d100489b88badf1f23ad9d5ffafa3805777fb7c8301067228eb81549"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/tests/test_design.py",
+          "sha256": "915e7da49843db6c4c7d36750009ec9cf5005565f31e94a977ae6084e17b654c"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/tools/check_design.py",
+          "sha256": "4dc506e242200d43f8f406f4f0755fa4745b6a9ae62fb8872ee9d7a14de5954c"
+        },
+        {
+          "path": "profiles/declarative-design-0.3/tools/schema_subset.py",
+          "sha256": "a70f862e8614826cbff84ba26e02cfb2c855857f11495f59ff8f4f39ffe06840"
+        }
+      ]
+    }
+  ]
+}

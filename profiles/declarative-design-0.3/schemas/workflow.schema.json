@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workflowVersion",
+    "name",
+    "onFailure",
+    "deadlineSeconds",
+    "steps"
+  ],
+  "properties": {
+    "workflowVersion": {
+      "const": "0.3.0"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "onFailure": {
+      "const": "pause"
+    },
+    "deadlineSeconds": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 86400
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "dependsOn",
+              "type",
+              "binding"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*$",
+                "maxLength": 60
+              },
+              "dependsOn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-z][a-z0-9-]*$",
+                  "maxLength": 60
+                },
+                "uniqueItems": true,
+                "maxItems": 20
+              },
+              "type": {
+                "const": "query"
+              },
+              "binding": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*$",
+                "maxLength": 60
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "dependsOn",
+              "type",
+              "binding"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*$",
+                "maxLength": 60
+              },
+              "dependsOn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-z][a-z0-9-]*$",
+                  "maxLength": 60
+                },
+                "uniqueItems": true,
+                "maxItems": 20
+              },
+              "type": {
+                "const": "action"
+              },
+              "binding": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*$",
+                "maxLength": 60
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "dependsOn",
+              "type",
+              "policyRef"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*$",
+                "maxLength": 60
+              },
+              "dependsOn": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[a-z][a-z0-9-]*$",
+                  "maxLength": 60
+                },
+                "uniqueItems": true,
+                "maxItems": 20
+              },
+              "type": {
+                "const": "approval"
+              },
+              "policyRef": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

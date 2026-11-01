@@ -1,0 +1,425 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json",
+  "title": "RevenueLab Page Manifest 0.2",
+  "description": "Draft Standard. Pinned local schema; proposed public identifier.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "standard",
+    "standardVersion",
+    "id",
+    "name",
+    "description",
+    "version",
+    "publisher",
+    "hostApi",
+    "delivery",
+    "display",
+    "permissions",
+    "context",
+    "events",
+    "network",
+    "dataHandling",
+    "support",
+    "license",
+    "profile",
+    "services"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.2/schema.json"
+    },
+    "standard": {
+      "type": "string",
+      "const": "rlab.page"
+    },
+    "standardVersion": {
+      "type": "string",
+      "const": "0.2"
+    },
+    "id": {
+      "$ref": "#/$defs/reverseDomainId"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1000
+    },
+    "version": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/reverseDomainId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        }
+      }
+    },
+    "hostApi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum",
+        "maximumExclusive"
+      ],
+      "properties": {
+        "minimum": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "maximumExclusive": {
+          "$ref": "#/$defs/semanticVersion"
+        }
+      }
+    },
+    "delivery": {
+      "oneOf": [
+        {
+          "title": "Bundled static page",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "entry"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "const": "bundle"
+            },
+            "entry": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 240,
+              "pattern": "^app/[A-Za-z0-9._/-]+\\.html$"
+            }
+          }
+        },
+        {
+          "title": "Approved remote page",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "url",
+            "origin"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "const": "remote"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "origin": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://[^/*\\s]+(?::[0-9]{1,5})?$"
+            }
+          }
+        }
+      ]
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "themeAware"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "workspace"
+          ]
+        },
+        "themeAware": {
+          "type": "boolean"
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested",
+        "required"
+      ],
+      "properties": {
+        "requested": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "context.read",
+              "locations.read",
+              "vehicle-classes.read",
+              "rate-observations.read",
+              "own-rates.read",
+              "utilization.read",
+              "rate-change-history.read",
+              "reservation-pace.read",
+              "alerts.read"
+            ]
+          }
+        },
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "context.read",
+              "locations.read",
+              "vehicle-classes.read",
+              "rate-observations.read",
+              "own-rates.read",
+              "utilization.read",
+              "rate-change-history.read",
+              "reservation-pace.read",
+              "alerts.read"
+            ]
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "optional"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/contextKey"
+          }
+        },
+        "optional": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/contextKey"
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subscribe",
+        "publish"
+      ],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "const": "context.changed"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connect"
+      ],
+      "properties": {
+        "connect": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://[^*\\s/]+(?::[0-9]{1,5})?$"
+          }
+        }
+      }
+    },
+    "dataHandling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "externalProcessing",
+        "retention",
+        "personalData"
+      ],
+      "properties": {
+        "externalProcessing": {
+          "type": "boolean"
+        },
+        "retention": {
+          "type": "string",
+          "enum": [
+            "none",
+            "session",
+            "customer-controlled"
+          ]
+        },
+        "personalData": {
+          "type": "string",
+          "enum": [
+            "not-requested"
+          ]
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "url"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "unspecified",
+            "customer-private",
+            "open-source",
+            "commercial"
+          ]
+        },
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^[A-Za-z0-9._/-]+$"
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9-]+(?:\\.[a-z0-9-]+)+$"
+      },
+      "additionalProperties": true
+    },
+    "profile": {
+      "const": "RLAB-PAGE-READONLY-0.2"
+    },
+    "services": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "minimum",
+          "maximumExclusive",
+          "required"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/reverseDomainId"
+          },
+          "minimum": {
+            "$ref": "#/$defs/semanticVersion"
+          },
+          "maximumExclusive": {
+            "$ref": "#/$defs/semanticVersion"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "reverseDomainId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "pattern": "^[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "contextKey": {
+      "type": "string",
+      "enum": [
+        "tenant",
+        "user",
+        "roles",
+        "locations",
+        "rental-period",
+        "vehicle-classes",
+        "channel",
+        "currency",
+        "locale",
+        "timezone",
+        "environment",
+        "capabilities"
+      ]
+    },
+    "eventName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+    }
+  }
+}

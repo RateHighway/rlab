@@ -1,0 +1,76 @@
+{
+  "$schema": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.3/design.schema.json",
+  "standard": "rlab.page",
+  "standardVersion": "0.3",
+  "profile": "RLAB-DECLARATIVE-DESIGN-0.3",
+  "stage": "design-only",
+  "id": "com.example.fleet-review.level4",
+  "name": "Daily Fleet Review",
+  "description": "Synthetic Level 4 design; no live data, writes or host runtime.",
+  "version": "0.1.1",
+  "publisher": {
+    "id": "com.example.builder",
+    "name": "Example Builder (synthetic)"
+  },
+  "support": {
+    "owner": "Example Builder",
+    "url": "https://example.com/support"
+  },
+  "license": {
+    "status": "open-source"
+  },
+  "capabilityLevel": 4,
+  "hostApi": {
+    "minimum": "0.3.0",
+    "maximumExclusive": "0.4.0"
+  },
+  "runtime": {
+    "kind": "declarative",
+    "uiContract": "0.3.0"
+  },
+  "surfaces": [
+    {
+      "slot": "workspace",
+      "required": true,
+      "entry": "ui/main.json"
+    }
+  ],
+  "permissions": {
+    "requested": [
+      "context.read",
+      "utilization.read",
+      "review-tasks.create"
+    ]
+  },
+  "queries": [
+    {
+      "name": "fleet",
+      "contract": "com.example.fleet-summary",
+      "minimum": "1.0.0",
+      "maximumExclusive": "2.0.0",
+      "inputBindings": {
+        "locationIds": {
+          "context": "locations"
+        }
+      }
+    }
+  ],
+  "actions": [
+    {
+      "name": "create-task",
+      "contract": "com.example.review-tasks.create",
+      "minimum": "1.0.0",
+      "maximumExclusive": "2.0.0",
+      "inputBindings": {
+        "locationIds": {
+          "context": "locations"
+        },
+        "title": {
+          "literal": "Review fleet pressure evidence"
+        }
+      }
+    }
+  ],
+  "workflow": "workflows/main.json",
+  "automation": "automation/main.json"
+}

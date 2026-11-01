@@ -1,0 +1,14 @@
+{
+  "automationVersion": "0.3.0",
+  "workflow": "workflows/main.json",
+  "activation": "requires-host-mandate",
+  "initialMode": "shadow",
+  "trigger": {
+    "kind": "daily",
+    "localTime": "08:00",
+    "timezone": "Europe/London",
+    "missed": "skip",
+    "ambiguous": "skip",
+    "nonexistent": "skip"
+  }
+}

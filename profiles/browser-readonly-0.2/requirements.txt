@@ -1,0 +1,4 @@
+# No third-party dependencies. Use a supported Python 3 release.
+# The reference checker evaluates only the keywords used in the pinned schemas.
+# For a general JSON Schema engine, independently validate with a maintained
+# Draft 2020-12 implementation, enabling format checks and disabling remote refs.

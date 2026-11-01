@@ -1,0 +1,25 @@
+{
+  "uiVersion": "0.3.0",
+  "title": "Fleet Review Action",
+  "components": [
+    {
+      "type": "Text",
+      "text": "Design preview with synthetic contracts. No live connection or action."
+    },
+    {
+      "type": "DataTable",
+      "query": "fleet",
+      "columns": [
+        "location",
+        "class",
+        "rentableUnits",
+        "committedUnits"
+      ]
+    },
+    {
+      "type": "ActionButton",
+      "label": "Create review task",
+      "action": "create-task"
+    }
+  ]
+}

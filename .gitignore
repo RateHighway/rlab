@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+**/tutorial-output/
+.DS_Store
+Thumbs.db
+*.code-workspace

@@ -1,0 +1,31 @@
+{
+  "hostId": "com.example.host",
+  "name": "Example host fixture (not a live service)",
+  "standardVersions": [
+    "0.2"
+  ],
+  "profiles": [
+    "RLAB-PAGE-READONLY-0.2"
+  ],
+  "hostApiVersion": "0.2.0",
+  "deliveryModes": [
+    "bundle"
+  ],
+  "permissions": [
+    "context.read"
+  ],
+  "contextKeys": [
+    "environment",
+    "locale"
+  ],
+  "services": [],
+  "limits": {
+    "compressedBytes": 25000000,
+    "expandedBytes": 100000000,
+    "fileBytes": 25000000,
+    "entries": 2000,
+    "pathCharacters": 240
+  },
+  "documentationUrl": "https://example.com/developers",
+  "supportUrl": "https://example.com/support"
+}

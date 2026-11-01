@@ -1,0 +1,20 @@
+{
+  "uiVersion": "0.3.0",
+  "title": "Fleet Pressure View",
+  "components": [
+    {
+      "type": "Text",
+      "text": "Design preview with synthetic contracts. No live connection or action."
+    },
+    {
+      "type": "DataTable",
+      "query": "fleet",
+      "columns": [
+        "location",
+        "class",
+        "rentableUnits",
+        "committedUnits"
+      ]
+    }
+  ]
+}
