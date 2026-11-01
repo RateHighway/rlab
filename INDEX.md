@@ -22,4 +22,4 @@
 | [GOVERNANCE.md](GOVERNANCE.md) | Shared-core decision process |
 | [SECURITY.md](SECURITY.md), [TRADEMARKS.md](TRADEMARKS.md) | Reporting and claims policies |
 | [LICENSE](LICENSE), [NOTICE](NOTICE) | Distribution rights and attribution |
-| [CHANGELOG.md](CHANGELOG.md), [MISTAKES.md](MISTAKES.md), [AWS-IMPACT.md](AWS-IMPACT.md) | Release, maintenance and infrastructure records |
+| [CHANGELOG.md](CHANGELOG.md) | Public changes and release history |

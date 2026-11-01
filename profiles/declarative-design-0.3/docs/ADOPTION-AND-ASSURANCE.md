@@ -84,8 +84,7 @@ It does not implement a renderer, production SDK, action broker, workflow runner
 This public source edition preserves the original draft design and its closed
 machine-checked profile. The public examples use version `0.1.1` and include
 Apache-2.0 licenses. The profile schemas, capability meanings and
-`design-only` restriction remain unchanged. Private planning records and
-historical delivery reports are outside this technical distribution.
+`design-only` restriction remain unchanged.
 
 The [sibling 0.2 profile](../../browser-readonly-0.2/README.md) provides the
 separate browser-package baseline. This 0.3 design expands the vocabulary

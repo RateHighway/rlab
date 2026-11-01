@@ -47,13 +47,19 @@ change, run `python -B tools/update_catalog.py`, review its diff and commit it
 with that change. CI checks for drift; it does not silently regenerate a
 changed catalog.
 
+The repository source ZIP includes only the public root files and source
+directories listed in tools/repository.py, with other root files/directories
+and known build/environment directories excluded. Files within the listed
+source directories still require review. Review the inventory when adding public source. Internal
+maintenance logs and infrastructure records belong in private working records.
+
 ## Publish separately
 
 Publishing source, issuing a release and deploying a host are separate actions.
-Create the public repository with fresh history containing only this technical
-tree. Do not import private repository history, operational records or website
-assets. Run checks on the published checkout and inspect CI before calling
-them successful on GitHub.
+Publish reviewed technical changes to this repository. Keep private repository
+history, operational records and website assets outside the public tree. Run
+checks on the published checkout and inspect CI before calling them successful
+on GitHub.
 
 For a numbered public release, bind the tag to a reviewed source commit and
 build from a clean checkout of that commit. Upload the resulting artifacts,

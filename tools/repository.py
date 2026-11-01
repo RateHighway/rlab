@@ -18,6 +18,12 @@ PROFILES = (
      ('check_design.py', 'schema_subset.py')),
 )
 OMIT = {'.git', '.venv', '__pycache__', 'build', 'tutorial-output'}
+PUBLIC_ROOT_FILES = {
+    '.gitattributes', '.gitignore', 'AGENTS.md', 'CHANGELOG.md', 'CLAUDE.md',
+    'CONTRIBUTING.md', 'DCO', 'GOVERNANCE.md', 'INDEX.md', 'LICENSE', 'NOTICE',
+    'README.md', 'SECURITY.md', 'TRADEMARKS.md', 'catalog.json',
+}
+PUBLIC_ROOT_DIRECTORIES = {'.github', 'docs', 'profiles', 'schemas', 'tests', 'tools'}
 
 
 def digest(path):
@@ -30,10 +36,13 @@ def write_json(path, value):
 
 
 def source_files(root=ROOT):
-    """Inventory the source tree, excluding local build and environment output."""
+    """Inventory public source, excluding local root files and build output."""
     found = []
     for current, dirs, files in os.walk(root):
         dirs[:] = sorted(d for d in dirs if d not in OMIT)
+        if Path(current) == ROOT:
+            dirs[:] = [d for d in dirs if d in PUBLIC_ROOT_DIRECTORIES]
+            files = [name for name in files if name in PUBLIC_ROOT_FILES]
         for name in dirs + sorted(files):
             path = Path(current) / name
             if path.is_symlink():

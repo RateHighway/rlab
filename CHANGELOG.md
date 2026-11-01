@@ -1,5 +1,12 @@
 # Changelog
 
+## Public repository maintenance - 2026-10-31
+
+- Removed internal maintenance and infrastructure records from the public
+  source tree and navigation; retained technical and contributor guidance.
+- Limited release source ZIPs to the declared public root files and source
+  directories. Local root notes and working directories are excluded.
+
 ## 0.2.0 - Central registration and host admission
 
 - Required `RLAB-CENTRAL-ADMISSION-1` for official host admission, with centrally

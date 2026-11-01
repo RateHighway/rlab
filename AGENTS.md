@@ -38,5 +38,8 @@ Read [README.md](README.md), [catalog.json](catalog.json) and the
 - Publishing a repository, creating a release and deploying a website are
   separate operations. Follow the operator's explicit instruction for each.
 
-Record meaningful maintenance mistakes in [MISTAKES.md](MISTAKES.md). Keep
-the repository index and affected guides current.
+Keep the repository index and affected guides current. This public repository
+contains technical source and contributor guidance. Keep internal maintenance
+logs and infrastructure records in private working records. Root source files
+and directories included in release ZIPs are listed in tools/repository.py;
+review that inventory when adding public material.

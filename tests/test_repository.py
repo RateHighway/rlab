@@ -2,6 +2,7 @@
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -11,10 +12,35 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from build_release import build
-from repository import make_catalog
+from repository import VERSION, make_catalog, source_files
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_release_source_excludes_local_housekeeping(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source, output = Path(tmp) / 'source', Path(tmp) / 'release'
+            for path in source_files():
+                destination = source / path.relative_to(ROOT)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(path.read_bytes())
+            local_files = ('MISTAKES.md', 'AWS-IMPACT.md', '.env',
+                           'private-review/notes.md')
+            for name in local_files:
+                path = source / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('Local working record; exclude from release.', encoding='utf-8')
+            result = subprocess.run(
+                [sys.executable, '-B', str(source / 'tools/build_release.py'),
+                 '--output', str(output)], capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            manifest = json.loads((output / 'release-manifest.json').read_text(encoding='utf-8'))
+            with zipfile.ZipFile(output / f'rlab-source-{VERSION}.zip') as archive:
+                names = set(archive.namelist())
+                self.assertTrue(names.isdisjoint(local_files))
+                self.assertIn('README.md', names)
+                self.assertIn('docs/getting-started.md', names)
+                self.assertEqual(names, {item['path'] for item in manifest['sourceFiles']})
+
     def test_catalog_matches_current_files(self):
         actual = json.loads((ROOT / 'catalog.json').read_text(encoding='utf-8'))
         self.assertEqual(actual, make_catalog())

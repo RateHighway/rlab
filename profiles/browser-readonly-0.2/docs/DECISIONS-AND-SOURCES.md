@@ -46,9 +46,7 @@ declarative designs.
 
 This edition preserves the 0.2 schema and protocol identifiers. Public sample
 version `0.1.1` adds explicit Apache-2.0 licensing and updated documentation;
-the browser's `pageVersion` matches the manifest. Older review artifacts are
-not overwritten. The original delivery reports and private planning records
-are not part of this public technical distribution.
+the browser's `pageVersion` matches the manifest.
 
 Future production hosts still need a runtime, secure adapter contracts,
 publisher review, actual capability discovery, accessibility/security tests

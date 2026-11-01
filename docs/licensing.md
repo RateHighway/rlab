@@ -36,8 +36,7 @@ commercial service entitlement or certificate.
 
 All bundled example LICENSE.txt files contain the complete Apache-2.0 text,
 and their NOTICE.txt files identify the attribution. Their page versions are
-0.1.1. They are new public example sources; they do not retroactively change
-the identity or license metadata of an earlier privately circulated archive.
+0.1.1. These notices apply to the public example sources in this repository.
 
 The profile tools use Python's standard library and bundle no third-party
 runtime library, font, image or SDK. Dependencies added in future contributions

@@ -68,7 +68,7 @@
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/DECISIONS-AND-SOURCES.md",
-          "sha256": "8c8821be05b53444d8ac609989d9545501977a6a27449be6c8d65fd0fcc91b56"
+          "sha256": "6d439d4a89eab8d56322ac14b8e8cad494939943fc8d9bc93ca73252d3d57c5c"
         },
         {
           "path": "profiles/browser-readonly-0.2/docs/DEVELOPER-GUIDE.md",
@@ -229,7 +229,7 @@
         },
         {
           "path": "profiles/declarative-design-0.3/docs/ADOPTION-AND-ASSURANCE.md",
-          "sha256": "fe6cee1c8861675f8b553e044f6226a7d6787d15dd0ebd71843396fa405c933e"
+          "sha256": "9ca1afb4d153aeeb9687732ccb60e32d858a7b16c1881471b5533744836eb566"
         },
         {
           "path": "profiles/declarative-design-0.3/docs/BUILDER-AND-HOST-GUIDE.md",
