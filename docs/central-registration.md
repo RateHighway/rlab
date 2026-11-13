@@ -139,6 +139,47 @@ access to the central archive; reporting writes need a separately controlled
 workflow. No per-host write enforcement or reporting API is supplied merely
 by defining these JSON records.
 
+### Bounded automatic approval
+
+Central reviewers may delegate routine approval to a policy workflow that they
+control in the central archive. The workflow decides, not the host. A host
+still submits a request with no host permission and `pending` approval, and it
+cannot merge, permit or approve its own records. A rule is written and changed
+only through reviewed commits to the central archive.
+
+An automatic rule must name each host installation it covers and may approve
+only a request that meets every one of its stated conditions. The first
+authorized rule (RateHighway, 2026-11-13) is limited to low-risk test
+placements:
+
+| Condition | Required value |
+| --- | --- |
+| Host | A RateHighway test host installation named in the rule |
+| Environment | `development` |
+| Purpose | `display` |
+| Profile and delivery | `RLAB-PAGE-READONLY-0.2`, bundled |
+| Checks | The package passes the pinned profile checks, and its exact package and source ZIP are retained centrally |
+| Permissions | `context.read` only |
+| Services | None |
+| Network | No connect destinations |
+
+A request that meets all of these may receive permission for that host on
+that one page version and approval of that one deployment record. Any request
+that misses a condition waits for a central reviewer. A `staging` or
+`production` placement, a page that uses a data service and any other host
+are never approved automatically under this rule.
+
+Automatic approval changes who records the decision. It changes nothing else:
+the 24-hour lease limit, the 15-minute authority refresh, fail-closed
+behavior, the admission checks a host must perform and a reviewer's ability
+to revoke a registration, remove a host or disable a deployment all remain in
+force. It is not a review of a page's code or calculations and it issues no
+certificate.
+
+Publishing this rule deploys no workflow and no host. A rule covers no host
+installation until a central reviewer names that installation in the central
+archive.
+
 The central archive initially contains five reference registrations with no
 allowed hosts and no deployment records. These are reference artifacts, not
 evidence of live host installations or active pages.

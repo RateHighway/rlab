@@ -1,5 +1,17 @@
 # Changelog
 
+## Central policy amendment - 2026-11-13
+
+- `RLAB-CENTRAL-ADMISSION-1` now states that central reviewers may delegate
+  routine approval to a policy workflow they control in the central archive,
+  and records the first authorized rule: low-risk `development` display
+  placements on a named RateHighway test host installation, for bundled
+  `RLAB-PAGE-READONLY-0.2` pages that pass the checks and request only
+  `context.read`, no services and no network destinations.
+- A host still cannot permit or approve its own records. The policy
+  identifier, record schemas, admission checker, lease limit and refresh
+  limit are unchanged. No workflow or host is deployed by this text.
+
 ## Public repository maintenance - 2026-10-31
 
 - Removed internal maintenance and infrastructure records from the public
