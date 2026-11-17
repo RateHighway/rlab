@@ -167,7 +167,7 @@ available by invitation. Independent hosts choose their own upload workflow.
 The package commands above remain useful for profile development; a builder
 using RevenueLab.build does not need to make or upload a `.rlab` file.
 
-Prepare **one `.zip` file, no larger than 25,000,000 bytes**, with this layout:
+Prepare **one `.zip` file, no larger than 25 MB**, with this layout:
 
 ```text
 rlab-page.json
@@ -185,7 +185,7 @@ version in `app/assets/page.js` equal to the manifest. Use separate local
 script and style files. The host blocks inline scripts, inline styles and
 assets loaded from another website.
 
-Add your original source and build notes beside these files when needed.
+For a compiled page, include original editable source and build instructions beside these files. Source is retained centrally for review and audit for every page version, with no exception or waiver, including staff and test pages. The checks confirm a matching source ZIP exists and is retained; they cannot prove original-source completeness or that the package was built from it.
 RevenueLab.build does not compile code or run commands from the ZIP. If the
 page uses React, Vite or another build tool, compile it first and place the
 ready-to-run output under `app/`. Do not include passwords, keys, tokens or
@@ -200,8 +200,8 @@ The same ZIP produces the same page package.
 
 The page package accepts `.json`, `.html`, `.css`, `.js`, `.mjs`, `.png`,
 `.jpg`, `.jpeg`, `.webp`, `.gif`, `.ico`, `.woff`, `.woff2`, `.txt`, `.md`
-and `.csv`. Its limits are 2,000 files, 25,000,000 bytes per file and
-100,000,000 bytes expanded. Archive files, native programs, WebAssembly,
+and `.csv`. Its limits are 2,000 files, 25 MB per file and
+100 MB expanded. Archive files, native programs, WebAssembly,
 `.env`, `.pem` and `.key` files are refused inside the package. Do not bundle
 `__rlab/host-config.json`; the host supplies that file.
 
