@@ -43,3 +43,23 @@ contains technical source and contributor guidance. Keep internal maintenance
 logs and infrastructure records in private working records. Root source files
 and directories included in release ZIPs are listed in tools/repository.py;
 review that inventory when adding public material.
+
+## Foundational rule: built for agents, for people who are not technical
+
+RateHighway owner directive, 2026-11-17. Most RevenueLab builders are car
+rental operators, not developers, and nearly all of them will build pages
+through an AI agent. Everything in this repository is designed for the agent
+as the first reader:
+
+- Every profile, schema, field, tool and check ships with rich agent language:
+  what it is, when to use it, exact inputs and outputs, a synthetic example,
+  limits, and what needs a person's approval. Put it in the schema
+  descriptions, the agent quickstart and the catalog, not only in prose.
+- Validation errors carry a stable code plus a plain-language explanation and
+  next step that an agent can relay to the builder unchanged.
+- Keep the path to a working page as short as possible: fewest steps,
+  sensible defaults, no developer setup.
+- A change is not finished until a real agent, given only the published
+  documentation, can use it end to end.
+- Simple never means unsafe: agent language states admission, permission and
+  data rules and never suggests a way around them.
