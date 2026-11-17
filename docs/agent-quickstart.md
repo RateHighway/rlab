@@ -18,6 +18,28 @@ Do not choose a target solely by comparing version numbers. The repository
 version, standard version, profile version, host API version and page version
 identify different contracts. Current profiles reject unknown fields.
 
+## Help a builder upload to RevenueLab.build
+
+RevenueLab.build is a RateHighway-operated host available by invitation.
+Its upload workflow accepts **one ZIP**, not a `.rlab` package plus a separate
+source upload. This is a host convenience, not a change to the `.rlab` format
+or a requirement for an independent application's upload workflow.
+
+Help the builder prepare a ZIP containing `rlab-page.json` at the top and the
+ready-to-run page files under `app/`. RevenueLab.build builds the `.rlab`
+package from those files and retains the ZIP as source. It does not run a
+build tool: compile a framework page before uploading and put its output in
+`app/`. Use the browser read-only 0.2 profile for this workflow; the 0.3
+examples remain design-only.
+
+Follow the [RevenueLab.build upload instructions](create-a-page.md#upload-to-revenuelabbuild)
+for layout, limits and the checks. Keep passwords, keys, tokens and customer
+records out of every file in the ZIP, including source-only files. If the
+assistant cannot produce a downloadable ZIP, explain that limitation rather
+than claiming a file was created or transferred. Sign-in and any required
+approval belong to the builder; a successful check grants neither access nor
+certification.
+
 ## Retrieve a coherent set
 
 1. Obtain the repository URL from its publisher, then resolve a trusted Git

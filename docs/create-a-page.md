@@ -1,10 +1,13 @@
 # Create a RevenueLab Page
 
 Official host use requires [central registration](central-registration.md).
-After building and checking a page, submit its exact package and source archive
-to the private `RateHighway/rlab-pages` repository. An authorized central host
-placement and successful admission check are required before display; a local
-`offline-passed` or `design-checked` report does not grant that permission.
+The host's registration workflow must arrange central retention of the exact
+page package and source archive, plus an authorized placement and successful
+admission check before display. A local `offline-passed` or `design-checked`
+report does not grant that permission. For an invited RevenueLab.build
+builder, use the [one-ZIP upload workflow](#upload-to-revenuelabbuild) below;
+the builder does not need a GitHub account or direct access to the private
+central archive.
 
 A useful first page answers one small business question, explains its limits
 and asks for little access. This guide uses a synthetic fleet snapshot. It
@@ -156,6 +159,66 @@ compatibility with an installed application.
 Opening the example HTML directly deliberately fails to establish a session.
 The host must supply reviewed origin configuration and the protocol described
 in the [integration guide](host-integration.md).
+
+## Upload to RevenueLab.build
+
+This section applies only to RevenueLab.build, the RateHighway-operated host
+available by invitation. Independent hosts choose their own upload workflow.
+The package commands above remain useful for profile development; a builder
+using RevenueLab.build does not need to make or upload a `.rlab` file.
+
+Prepare **one `.zip` file, no larger than 25,000,000 bytes**, with this layout:
+
+```text
+rlab-page.json
+app/
+  index.html
+  assets/
+README.md
+LICENSE.txt
+```
+
+The **manifest**, `rlab-page.json`, describes the page, its version, entry
+file and requested access. Keep it at the top of the ZIP. Set the entry to
+an HTML file under `app/`, such as `app/index.html`, and keep the page ID and
+version in `app/assets/page.js` equal to the manifest. Use separate local
+script and style files. The host blocks inline scripts, inline styles and
+assets loaded from another website.
+
+Add your original source and build notes beside these files when needed.
+RevenueLab.build does not compile code or run commands from the ZIP. If the
+page uses React, Vite or another build tool, compile it first and place the
+ready-to-run output under `app/`. Do not include passwords, keys, tokens or
+customer records anywhere in the ZIP. Secret scanning covers source-only
+files too.
+
+RevenueLab.build builds the page package from the manifest, the files under
+`app/`, the license file named by the manifest, and top-level `README.md`
+and files whose names start with `LICENSE`, `LICENCE` or `NOTICE`. Other
+files stay in the retained source ZIP and are not served as page files.
+The same ZIP produces the same page package.
+
+The page package accepts `.json`, `.html`, `.css`, `.js`, `.mjs`, `.png`,
+`.jpg`, `.jpeg`, `.webp`, `.gif`, `.ico`, `.woff`, `.woff2`, `.txt`, `.md`
+and `.csv`. Its limits are 2,000 files, 25,000,000 bytes per file and
+100,000,000 bytes expanded. Archive files, native programs, WebAssembly,
+`.env`, `.pem` and `.key` files are refused inside the package. Do not bundle
+`__rlab/host-config.json`; the host supplies that file.
+
+An assistant that can create files can provide the completed ZIP for the
+builder to download. The builder selects it in the signed-in workspace's
+Upload step or the upload step opened by an assistant reservation. A
+reservation needs the exact ZIP's byte size and SHA-256 digest, a fingerprint
+of its bytes; selecting a changed file will fail that match. Do not promise
+that a particular assistant can create or transfer a file without testing
+that client.
+
+A passed upload check does not approve display, verify the page's calculations
+or issue a certificate. Central retention still includes both the generated
+page package and the source ZIP. The host's central admission, placement
+approval, permissions and service grants still apply. A changed page needs a
+new version; an existing registered version cannot be replaced with different
+files.
 
 ## 5. Test behavior in the real development host
 

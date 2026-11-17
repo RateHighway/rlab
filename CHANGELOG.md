@@ -1,5 +1,14 @@
 # Changelog
 
+## RevenueLab.build upload guide - 2026-11-17
+
+- Explained the one-ZIP builder upload in the creation, getting-started and
+  agent guides, including compiled files, source retention, limits and the
+  builder's file-selection step.
+- Kept this workflow specific to RevenueLab.build. Profile contracts,
+  independent-host tooling, central retention and admission policy are
+  unchanged. No host or service is deployed by these documentation edits.
+
 ## Central policy amendment - 2026-11-13
 
 - `RLAB-CENTRAL-ADMISSION-1` now states that central reviewers may delegate

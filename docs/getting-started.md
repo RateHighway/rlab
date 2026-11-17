@@ -28,6 +28,22 @@ disconnected when opened without its development host. The 0.3 examples carry
 Neither kit supplies a deployed host, production credentials or a certified
 implementation.
 
+## If you are building for RevenueLab.build
+
+RevenueLab.build is a separate RateHighway-operated host, available by
+invitation. Its builder upload accepts one ZIP containing the manifest at
+the top and the ready-to-run page files in `app/`. It builds the `.rlab`
+package for you; it does not compile source or run build commands. You do
+not need local packaging tools for this upload path.
+
+Ask your assistant to prepare the ZIP using the
+[RevenueLab.build upload instructions](create-a-page.md#upload-to-revenuelabbuild).
+Use synthetic data and keep passwords, keys, tokens and customer records out
+of the entire ZIP. The central archive still retains the page package and
+source ZIP, and a passed check does not grant display approval, service
+access or certification. This convenience does not change the common format
+or the workflow an independent host chooses.
+
 ## Run the source checks
 
 Use Python 3.11 or newer and Git for the full test suite. The Python tools use
