@@ -38,7 +38,9 @@ convert a package into another profile.
 
 Draft 0.2 allows dotted, namespaced keys in its `extensions` metadata object.
 That metadata is nonessential: it cannot add permissions, hidden execution
-requirements or required runtime behavior. The manifest is otherwise closed,
+requirements or required runtime behavior. The first documented key is
+`com.ratehighway.rlab.preview`, which declares a page's mockup and thumbnail
+images; see [page preview images](preview-images.md). The manifest is otherwise closed,
 and unknown scopes are rejected. Versioned service declarations are a
 separate mechanism.
 

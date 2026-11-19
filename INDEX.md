@@ -13,6 +13,7 @@
 | [docs/create-a-page.md](docs/create-a-page.md) | Design, build and check a page |
 | [docs/host-integration.md](docs/host-integration.md) | Implement support in an independent application |
 | [docs/extensions-and-compatibility.md](docs/extensions-and-compatibility.md) | Versioned extension contracts and compatibility boundaries |
+| [docs/preview-images.md](docs/preview-images.md) | Mockup and thumbnail images for a page: sizes, content rules and the `com.ratehighway.rlab.preview` declaration |
 | [docs/agent-quickstart.md](docs/agent-quickstart.md) | Pinned source consumption and agent boundaries |
 | [docs/conformance.md](docs/conformance.md) | What offline checks and future host tests establish |
 | [docs/releases.md](docs/releases.md) | Build, verification and publication sequence |

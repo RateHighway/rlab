@@ -18,6 +18,11 @@ Do not choose a target solely by comparing version numbers. The repository
 version, standard version, profile version, host API version and page version
 identify different contracts. Current profiles reject unknown fields.
 
+For every browser page you build or update, include a mockup and a thumbnail
+captured from the real page with sample data, declared under the
+`com.ratehighway.rlab.preview` extensions key. Read
+[page preview images](preview-images.md). Never invent a preview image.
+
 ## Help a builder upload to RevenueLab.build
 
 RevenueLab.build is a RateHighway-operated host available by invitation.

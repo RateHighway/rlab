@@ -1,5 +1,16 @@
 # Changelog
 
+## Page preview images - 2026-11-19
+
+- Added [page preview images](docs/preview-images.md): a mockup
+  (1600 x 900) and a thumbnail (640 x 360) under `app/assets/preview/`,
+  declared in `extensions` under `com.ratehighway.rlab.preview` with exact
+  sizes and alt text, captured from the real page with synthetic data.
+- Recommended for every `RLAB-PAGE-READONLY-0.2` page and planned to be
+  required in the next browser page profile. The 0.2 schema, the reference
+  validator and every existing page are unchanged; no checker refuses a page
+  without preview images.
+
 ## RevenueLab.build upload guide - 2026-11-17
 
 - Explained the one-ZIP builder upload in the creation, getting-started and

@@ -134,6 +134,12 @@ for your own page. If you change the page ID or version, update the constants
 in `app/assets/page.js` as well as the manifest. A mismatch should prevent a
 host session from starting.
 
+Add a mockup and a thumbnail image of the page under `app/assets/preview/` and
+declare them in the manifest's `extensions` object. They are recommended for
+every 0.2 page and planned to be required in the next browser page profile.
+Sizes, content rules and the declaration are in
+[page preview images](preview-images.md).
+
 You may use plain browser files or compile a frontend framework in your own
 build environment. Package the compiled output. Keep scripts and styles in
 separate local files so the host can enforce a strict content policy. Do not
