@@ -4,7 +4,7 @@ Official host use requires [central registration](central-registration.md).
 The host's registration workflow must arrange central retention of the exact
 page package and source archive, plus an authorized placement and successful
 admission check before display. A local `offline-passed` or `design-checked`
-report does not grant that permission. For an invited RevenueLab.build
+report does not grant that permission. For a registered RevenueLab.build
 builder, use the [one-ZIP upload workflow](#upload-to-revenuelabbuild) below;
 the builder does not need a GitHub account or direct access to the private
 central archive.
@@ -162,8 +162,9 @@ in the [integration guide](host-integration.md).
 
 ## Upload to RevenueLab.build
 
-This section applies only to RevenueLab.build, the RateHighway-operated host
-available by invitation. Independent hosts choose their own upload workflow.
+This section applies only to RevenueLab.build, the RateHighway-operated host.
+You need a RevenueLab account to upload or manage a page. Access is available
+to registered members. Independent hosts choose their own upload workflow.
 The package commands above remain useful for profile development; a builder
 using RevenueLab.build does not need to make or upload a `.rlab` file.
 

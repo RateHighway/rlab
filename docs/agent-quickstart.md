@@ -20,7 +20,8 @@ identify different contracts. Current profiles reject unknown fields.
 
 ## Help a builder upload to RevenueLab.build
 
-RevenueLab.build is a RateHighway-operated host available by invitation.
+RevenueLab.build is a RateHighway-operated host. You need a RevenueLab account
+to upload or manage a page. Access is available to registered members.
 Its upload workflow accepts **one ZIP**, not a `.rlab` package plus a separate
 source upload. This is a host convenience, not a change to the `.rlab` format
 or a requirement for an independent application's upload workflow.
