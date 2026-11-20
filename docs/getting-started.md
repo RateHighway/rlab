@@ -30,9 +30,10 @@ implementation.
 
 ## If you are building for RevenueLab.build
 
-RevenueLab.build is a separate RateHighway-operated host, available by
-invitation. Its builder upload accepts one ZIP containing the manifest at
-the top and the ready-to-run page files in `app/`. It builds the `.rlab`
+RevenueLab.build is a separate RateHighway-operated host. You need a
+RevenueLab account to upload or manage a page. Access is available to
+registered members. Its builder upload accepts one ZIP containing the manifest
+at the top and the ready-to-run page files in `app/`. It builds the `.rlab`
 package for you; it does not compile source or run build commands. You do
 not need local packaging tools for this upload path.
 
