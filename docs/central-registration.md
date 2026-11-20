@@ -32,7 +32,7 @@ Structural checking and central admission answer different questions:
 | Central admission | Are these exact bytes registered, currently permitted for this host and bound to an approved, active, unexpired deployment for the requested purpose? |
 
 `RLAB-CENTRAL-ADMISSION-1` is an overlay. It adds no fields to the closed
-Draft 0.2 or 0.3 page manifests and does not weaken unknown-field rejection.
+Draft 0.2, 0.3 or 0.4 page manifests and does not weaken unknown-field rejection.
 Existing `offline-passed` and `design-checked` results remain structural
 evidence. They do not grant admission.
 
@@ -41,7 +41,13 @@ can be admitted for **design review**, never for **display** under this
 overlay. Registration does not create an executable renderer or change
 `stage: "design-only"`.
 
-For the browser profile, central admission accepts **bundled delivery only**.
+The browser profiles `RLAB-PAGE-READONLY-0.2` and `RLAB-PAGE-0.4` can be
+admitted for **display**. A 0.4 page may ask to change Utilization 4 groups
+(`utilization.manage`); that permission is decided by the host for each person
+and each request, never by admission, so a 0.4 page is admitted under exactly
+the same rules as a 0.2 page and gains nothing from being admitted.
+
+For the browser profiles, central admission accepts **bundled delivery only**.
 The legacy structural schema also describes remote-URL delivery, but that
 mode is denied by this overlay: hashing a manifest or wrapper does not bind
 the executable bytes that a URL may serve later. Serve executable assets from

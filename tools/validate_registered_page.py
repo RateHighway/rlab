@@ -25,6 +25,10 @@ spec = importlib.util.spec_from_file_location(
     'rlab_browser_reference', ROOT / 'profiles/browser-readonly-0.2/tools/rlab.py')
 BROWSER = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(BROWSER)
+spec04 = importlib.util.spec_from_file_location(
+    'rlab_browser_reference_04', ROOT / 'profiles/browser-0.4/tools/rlab.py')
+BROWSER04 = importlib.util.module_from_spec(spec04)
+spec04.loader.exec_module(BROWSER04)
 
 
 class RegistryError(ValueError):
@@ -154,6 +158,16 @@ def validate(package, registry, host_id, deployment_id, context, purpose='displa
                 frozen = Path(tmp) / 'page.rlab'
                 frozen.write_bytes(data)
                 require(BROWSER.validate(frozen)['status'] == 'offline-passed',
+                        'REG010', 'Browser package failed its offline checks')
+        elif profile == 'RLAB-PAGE-0.4':
+            # The 0.4 browser profile is admitted exactly like 0.2: bundled page code that
+            # passes its own pinned profile checks. Saving data never widens admission.
+            require(manifest['delivery']['mode'] == 'bundle', 'REG010',
+                    'Central admission requires bundled page code; remote delivery is not digest-bound')
+            with tempfile.TemporaryDirectory(prefix='rlab-registration-package-') as tmp:
+                frozen = Path(tmp) / 'page.rlab'
+                frozen.write_bytes(data)
+                require(BROWSER04.validate(frozen)['status'] == 'offline-passed',
                         'REG010', 'Browser package failed its offline checks')
         elif profile == 'RLAB-DECLARATIVE-DESIGN-0.3':
             BROWSER.schema_check(manifest, BROWSER.load_json(

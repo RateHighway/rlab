@@ -9,7 +9,7 @@
     "branch": "master",
     "validator": {
       "path": "tools/validate_registered_page.py",
-      "sha256": "0b076e7da961c9e2577ed6a8df14948c4bbcdd18ea55de29b84e9baa708bb063"
+      "sha256": "bbf126ad4bb1e75440b21d986256c58b9a0968b9e575e3cf8ff053f02fc95006"
     },
     "schemas": [
       {
@@ -18,7 +18,7 @@
       },
       {
         "path": "schemas/registration-record.schema.json",
-        "sha256": "25152ea97bebc0d8fc4a88c5e1c198d09a6de7c8b8bc46367696e5ddd9ab51ac"
+        "sha256": "3a3ca533ef33f21f3221c6e91748b9c9128d846d990588604e981b2eac37d2b7"
       }
     ]
   },

@@ -1,5 +1,17 @@
 # Changelog
 
+## Central admission for RLAB-PAGE-0.4 - 2026-11-20
+
+- `RLAB-PAGE-0.4` pages can be registered and admitted for display under
+  the same rules as `RLAB-PAGE-READONLY-0.2`: bundled delivery, the pinned
+  profile checks, centrally retained package and source, and a reviewer's
+  approval. Registration records may name the 0.4 profile and standard
+  version, and `tools/validate_registered_page.py` checks 0.4 packages with
+  the 0.4 checker.
+- The bounded automatic approval rule is unchanged: it covers only read-only
+  0.2 pages with `context.read`, no services and no network, so a page that can
+  save data always waits for a central reviewer.
+
 ## RLAB-PAGE-0.4 browser profile, in development - 2026-11-19
 
 - Added [`profiles/browser-0.4/`](profiles/browser-0.4/README.md), Draft
