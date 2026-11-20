@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Car Group Manager | RevenueLab sample</title>
+  <link rel="stylesheet" href="assets/page.css">
+  <script src="assets/page.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">REVENUELAB / SAMPLE DATA</p>
+      <h1>Car Group Manager</h1>
+      <p class="lead">See and change how Location AAA groups its car classes in Utilization 4. All names and numbers on this page are invented samples.</p>
+    </header>
+    <p id="status" class="status" role="status">Sample data. Saving needs a RevenueLab host session with permission to change groups. Nothing you change here is saved.</p>
+    <div class="layout">
+      <section aria-labelledby="car-heading">
+        <h2 id="car-heading">Car Groups at Location AAA <span class="tag">Sample</span></h2>
+        <table>
+          <caption class="visually-hidden">Sample car groups and their car classes</caption>
+          <thead><tr><th scope="col">Group</th><th scope="col">Car classes</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+          <tbody id="car-groups"></tbody>
+        </table>
+        <form id="add-car" class="add" novalidate>
+          <h3>Add a Car Group</h3>
+          <label for="car-name">Group name</label>
+          <input id="car-name" name="name" maxlength="60" autocomplete="off" required>
+          <label for="car-classes">Car classes (codes separated by commas)</label>
+          <input id="car-classes" name="classes" maxlength="120" autocomplete="off" placeholder="For example: CCAR, ECAR" required>
+          <button type="submit">Add Group</button>
+        </form>
+      </section>
+      <aside aria-labelledby="loc-heading">
+        <h2 id="loc-heading">Location Groups <span class="tag">Sample</span></h2>
+        <ul id="location-groups" class="plain"></ul>
+        <h2 id="log-heading">Changes in This Session</h2>
+        <ol id="change-log" class="log" aria-labelledby="log-heading"></ol>
+        <p class="note">Each change is applied by the host's utilization service, logged with who made it, and can be undone there. This sample does not call a service.</p>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json",
+  "title": "RevenueLab Page Manifest 0.4",
+  "description": "Draft Standard 0.4, in development. Manifest for an RLAB-PAGE-0.4 browser page: the same closed grammar as RLAB-PAGE-READONLY-0.2, plus a required top-level preview object and the utilization.manage permission. Use it for a page that saves Utilization 4 location group and car group changes; use 0.2 for a page that only reads. Pinned local schema; the $id is a proposed public identifier, not a download service.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "standard",
+    "standardVersion",
+    "id",
+    "name",
+    "description",
+    "version",
+    "publisher",
+    "hostApi",
+    "delivery",
+    "display",
+    "permissions",
+    "context",
+    "events",
+    "network",
+    "dataHandling",
+    "support",
+    "license",
+    "profile",
+    "services",
+    "preview"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json",
+      "description": "Exact schema identifier for this profile. Copy it unchanged."
+    },
+    "standard": {
+      "type": "string",
+      "const": "rlab.page"
+    },
+    "standardVersion": {
+      "type": "string",
+      "const": "0.4",
+      "description": "Package contract version. Always \"0.4\" for this profile."
+    },
+    "id": {
+      "$ref": "#/$defs/reverseDomainId"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1000
+    },
+    "version": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/reverseDomainId"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        }
+      }
+    },
+    "hostApi": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum",
+        "maximumExclusive"
+      ],
+      "properties": {
+        "minimum": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "maximumExclusive": {
+          "$ref": "#/$defs/semanticVersion"
+        }
+      },
+      "description": "Host API range the page supports. A 0.4 page declares minimum \"0.4.0\" and maximumExclusive \"0.5.0\". The bridge messages are those of 0.2; host API 0.4.0 means utilization.manage may appear in the session."
+    },
+    "delivery": {
+      "oneOf": [
+        {
+          "title": "Bundled static page",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "entry"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "const": "bundle"
+            },
+            "entry": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 240,
+              "pattern": "^app/[A-Za-z0-9._/-]+\\.html$"
+            }
+          }
+        },
+        {
+          "title": "Approved remote page",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "url",
+            "origin"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "const": "remote"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
+            "origin": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://[^/*\\s]+(?::[0-9]{1,5})?$"
+            }
+          }
+        }
+      ]
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "themeAware"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "workspace"
+          ]
+        },
+        "themeAware": {
+          "type": "boolean"
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested",
+        "required"
+      ],
+      "properties": {
+        "requested": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "context.read",
+              "locations.read",
+              "vehicle-classes.read",
+              "rate-observations.read",
+              "own-rates.read",
+              "utilization.read",
+              "utilization.manage",
+              "rate-change-history.read",
+              "reservation-pace.read",
+              "alerts.read"
+            ]
+          },
+          "description": "Scopes the page would like to use. Keep the list as short as the page needs."
+        },
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "context.read",
+              "locations.read",
+              "vehicle-classes.read",
+              "rate-observations.read",
+              "own-rates.read",
+              "utilization.read",
+              "utilization.manage",
+              "rate-change-history.read",
+              "reservation-pace.read",
+              "alerts.read"
+            ]
+          },
+          "description": "Scopes without which the page cannot work. A subset of requested. The host refuses to launch the page if any is missing."
+        }
+      },
+      "description": "Access the page asks for. Every scope is read only except utilization.manage. utilization.manage lets the page ask the host's utilization service to create, update and delete location groups and car groups, and to undo a change. Nothing else: no rate changes, no reservation data, no other write. A page that requests utilization.manage MUST also request utilization.read (checker code RL017) and declare at least one service with required: true (RL018). Every scope in required MUST also be in requested (RL006). Example for a group manager: requested [\"context.read\", \"utilization.read\", \"utilization.manage\"], required the same. Requesting a scope is not a grant: the host, an administrator and the viewer's own rights decide on every request."
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "optional"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/contextKey"
+          }
+        },
+        "optional": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/contextKey"
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subscribe",
+        "publish"
+      ],
+      "properties": {
+        "subscribe": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "const": "context.changed"
+          }
+        },
+        "publish": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connect"
+      ],
+      "properties": {
+        "connect": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://[^*\\s/]+(?::[0-9]{1,5})?$"
+          }
+        }
+      }
+    },
+    "dataHandling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "externalProcessing",
+        "retention",
+        "personalData"
+      ],
+      "properties": {
+        "externalProcessing": {
+          "type": "boolean"
+        },
+        "retention": {
+          "type": "string",
+          "enum": [
+            "none",
+            "session",
+            "customer-controlled"
+          ]
+        },
+        "personalData": {
+          "type": "string",
+          "enum": [
+            "not-requested"
+          ]
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "url"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "unspecified",
+            "customer-private",
+            "open-source",
+            "commercial"
+          ]
+        },
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^[A-Za-z0-9._/-]+$"
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9-]+(?:\\.[a-z0-9-]+)+$"
+      },
+      "additionalProperties": true,
+      "description": "Namespaced, nonessential metadata. Cannot add permissions or runtime behavior. In 0.4 declare preview images in the top-level preview field, not under com.ratehighway.rlab.preview."
+    },
+    "profile": {
+      "const": "RLAB-PAGE-0.4",
+      "description": "Profile identifier. Always \"RLAB-PAGE-0.4\". A host that supports 0.2 and 0.4 uses this value to choose the checker and the host API version."
+    },
+    "services": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "minimum",
+          "maximumExclusive",
+          "required"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/reverseDomainId"
+          },
+          "minimum": {
+            "$ref": "#/$defs/semanticVersion"
+          },
+          "maximumExclusive": {
+            "$ref": "#/$defs/semanticVersion"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mockup",
+        "thumbnail"
+      ],
+      "description": "Required in 0.4 (RL012 when missing). Two pictures of the page so a host, page list or reviewer can show it without running it. Replaces the 0.2 extension key com.ratehighway.rlab.preview. Both images are page files under app/assets/preview/, captured from this version of the page with synthetic data, page area only, no added logos or frames. Rules: docs/preview-images.md in the rlab repository. The images grant no permission and are not evidence that the page works. Example: {\"mockup\": {\"path\": \"app/assets/preview/mockup.png\", \"width\": 1600, \"height\": 900, \"alt\": \"Group manager for Location AAA listing sample car groups, sample data.\"}, \"thumbnail\": {\"path\": \"app/assets/preview/thumbnail.png\", \"width\": 640, \"height\": 360, \"alt\": \"Sample car groups for Location AAA.\"}}",
+      "properties": {
+        "mockup": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "width",
+            "height",
+            "alt"
+          ],
+          "description": "The mockup image: the whole page as a user sees it. Capture it from the real page running with synthetic sample data; never draw or generate it. Exactly 1600 x 900 pixels, PNG or WebP, 1,000,000 bytes or smaller (RL016).",
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^app/assets/preview/mockup\\.(png|webp)$",
+              "description": "Path of the image inside the package. Exactly \"app/assets/preview/mockup.png\" or \"app/assets/preview/mockup.webp\", lowercase. The file must exist in the package (RL013) and its content must match its extension (RL014)."
+            },
+            "width": {
+              "type": "integer",
+              "const": 1600,
+              "description": "Pixel width. Always 1600. The checker reads the real width from the file (RL015)."
+            },
+            "height": {
+              "type": "integer",
+              "const": 900,
+              "description": "Pixel height. Always 900. The checker reads the real height from the file (RL015)."
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "description": "One sentence, 1 to 150 characters, saying what the page shows and its sample result. Do not start with \"Image of\" or \"Screenshot of\". Example: \"Group manager for Location AAA listing sample car groups, sample data.\""
+            }
+          }
+        },
+        "thumbnail": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "width",
+            "height",
+            "alt"
+          ],
+          "description": "The thumbnail image: the single most important result, readable at 320 x 180. Capture it from the real page running with synthetic sample data; never draw or generate it. Exactly 640 x 360 pixels, PNG or WebP, 200,000 bytes or smaller (RL016).",
+          "properties": {
+            "path": {
+              "type": "string",
+              "pattern": "^app/assets/preview/thumbnail\\.(png|webp)$",
+              "description": "Path of the image inside the package. Exactly \"app/assets/preview/thumbnail.png\" or \"app/assets/preview/thumbnail.webp\", lowercase. The file must exist in the package (RL013) and its content must match its extension (RL014)."
+            },
+            "width": {
+              "type": "integer",
+              "const": 640,
+              "description": "Pixel width. Always 640. The checker reads the real width from the file (RL015)."
+            },
+            "height": {
+              "type": "integer",
+              "const": 360,
+              "description": "Pixel height. Always 360. The checker reads the real height from the file (RL015)."
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "description": "One sentence, 1 to 150 characters, saying what the page shows and its sample result. Do not start with \"Image of\" or \"Screenshot of\". Example: \"Sample car groups for Location AAA.\""
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "reverseDomainId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "pattern": "^[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9]+(?:[a-z0-9-]*[a-z0-9])?)+$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "contextKey": {
+      "type": "string",
+      "enum": [
+        "tenant",
+        "user",
+        "roles",
+        "locations",
+        "rental-period",
+        "vehicle-classes",
+        "channel",
+        "currency",
+        "locale",
+        "timezone",
+        "environment",
+        "capabilities"
+      ]
+    },
+    "eventName": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*(?:\\.[a-z][a-z0-9-]*)+$"
+    }
+  }
+}

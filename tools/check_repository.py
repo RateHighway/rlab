@@ -57,6 +57,16 @@ def check_examples():
             raise ValueError('Browser example did not pass offline checks')
         if report['admissionEligible'] is not False:
             raise ValueError('An offline package check cannot grant central admission')
+    browser04 = ROOT / 'profiles/browser-0.4'
+    with tempfile.TemporaryDirectory(prefix='rlab-check-') as tmp:
+        package = Path(tmp) / 'group-manager.rlab'
+        run_json(browser04 / 'tools/rlab.py', 'pack', browser04 / 'examples/group-manager', package)
+        report = run_json(browser04 / 'tools/rlab.py', 'validate', package,
+                          '--host', browser04 / 'examples/host-capabilities.json')
+        if report['status'] != 'offline-passed':
+            raise ValueError('Browser 0.4 example did not pass offline checks')
+        if report['admissionEligible'] is not False:
+            raise ValueError('An offline package check cannot grant central admission')
     design = ROOT / 'profiles/declarative-design-0.3'
     for level in range(1, 5):
         report = run_json(design / 'tools/check_design.py', design / f'examples/level-{level}')
@@ -69,7 +79,7 @@ def check_examples():
 def main():
     summary = check_sources()
     check_examples()
-    for suite in ('profiles/browser-readonly-0.2/tests',
+    for suite in ('profiles/browser-readonly-0.2/tests', 'profiles/browser-0.4/tests',
                   'profiles/declarative-design-0.3/tests', 'tests'):
         subprocess.run([sys.executable, '-B', '-m', 'unittest', 'discover',
                         '-s', suite, '-v'], cwd=ROOT, check=True)

@@ -16,6 +16,9 @@ PROFILES = (
     ('declarative-design-0.3', 'RLAB-DECLARATIVE-DESIGN-0.3', '0.3',
      'design-only; no runtime', tuple('level-' + str(n) for n in range(1, 5)),
      ('check_design.py', 'schema_subset.py')),
+    ('browser-0.4', 'RLAB-PAGE-0.4', '0.4',
+     'browser-page-source; in development; no host supports it yet', ('group-manager',),
+     ('rlab.py',)),
 )
 OMIT = {'.git', '.venv', '__pycache__', 'build', 'tutorial-output'}
 PUBLIC_ROOT_FILES = {

@@ -1,0 +1,5 @@
+RevenueLab .rlab reference example
+Copyright 2026 RateHighway, Inc.
+
+Licensed under the Apache License, Version 2.0.
+See LICENSE.txt for the complete license terms.

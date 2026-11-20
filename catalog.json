@@ -368,6 +368,120 @@
           "sha256": "a70f862e8614826cbff84ba26e02cfb2c855857f11495f59ff8f4f39ffe06840"
         }
       ]
+    },
+    {
+      "id": "RLAB-PAGE-0.4",
+      "standardVersion": "0.4",
+      "maturity": "draft",
+      "runtimeStatus": "browser-page-source; in development; no host supports it yet",
+      "root": "profiles/browser-0.4",
+      "schemas": [
+        {
+          "path": "profiles/browser-0.4/schemas/rlab-host-0.4.schema.json",
+          "sha256": "97147ae1494465138acc77372e9a90cae3fff44fff9109db3744fba97cd6bc5d",
+          "id": null,
+          "documentSchemaIdentifier": null
+        },
+        {
+          "path": "profiles/browser-0.4/schemas/rlab-page-manifest-0.4.schema.json",
+          "sha256": "904bd91ceaf57ddee29e9bb69f99ee28dcbf07c7cf9f92f0f2cba921def2b2b8",
+          "id": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json",
+          "documentSchemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json"
+        }
+      ],
+      "examples": [
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/rlab-page.json",
+          "sha256": "ff9be93329c0886e84d9f8d3584132dbf2b92a4ce4d01461cdc4329efb86fa40",
+          "pageId": "com.example.group-manager",
+          "pageVersion": "0.1.0",
+          "schemaIdentifier": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json"
+        }
+      ],
+      "tools": [
+        {
+          "path": "profiles/browser-0.4/tools/rlab.py",
+          "sha256": "52366e6b71933361c6fc0934de94b25adc8f916dcf5d9fb9bb8c1c8c14b26a2e"
+        }
+      ],
+      "files": [
+        {
+          "path": "profiles/browser-0.4/README.md",
+          "sha256": "d4c198422b97f140a2fccb38ac29cee163ae3bae4768a9416ac5e71e1fa80024"
+        },
+        {
+          "path": "profiles/browser-0.4/docs/DEVELOPER-GUIDE.md",
+          "sha256": "3ae771221a8944fa2c443953c1f0a86e46daee008e80827f17cf00f80ec8a3fa"
+        },
+        {
+          "path": "profiles/browser-0.4/docs/HOST-INTEGRATION-GUIDE.md",
+          "sha256": "d3e64273fa657653f1cf29480aa060a06025d74a5495a85506e8e7ccc8e4f065"
+        },
+        {
+          "path": "profiles/browser-0.4/docs/RLAB-PAGE-STANDARD.md",
+          "sha256": "3658226db0e0c4537fc1b234fdf8693eec3e34f04726e195cce4054545c7dd81"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/NOTICE.txt",
+          "sha256": "33a33d8dea12b06d9839a02e13b02d1dbf15dcbb7de002082388d0b35944fd9a"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/README.md",
+          "sha256": "5008648d463555816bd9abaeb5d9f60ed8ebf5725cb84dfb0f9baf3bb464f12d"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/app/assets/page.css",
+          "sha256": "b6630546f0cf40e5fc26ce2b5828a00ce76b31c222ec94f7ec37fce0f0aa632b"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/app/assets/page.js",
+          "sha256": "005553c42ab24f2e20742229d33e9491c40fe3c1f4a94c503547914bd0a2778f"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/app/assets/preview/mockup.png",
+          "sha256": "d7228acf3f841a7faad3dc705c7ed587e7012e4fb335a3922c026b43cc3839b8"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/app/assets/preview/thumbnail.png",
+          "sha256": "b29caa6400f97315ee10b9a3bcff53abd54a19187f634e262ef8b74622008001"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/app/index.html",
+          "sha256": "51667657368c775a9bbf44111e3c574d2e5e95ab97a9bda9354b4674d092d516"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/group-manager/rlab-page.json",
+          "sha256": "ff9be93329c0886e84d9f8d3584132dbf2b92a4ce4d01461cdc4329efb86fa40"
+        },
+        {
+          "path": "profiles/browser-0.4/examples/host-capabilities.json",
+          "sha256": "8aac0f2bcda47de46c92b5de54cdcfac7814dd00820288d7b15199728bdc64aa"
+        },
+        {
+          "path": "profiles/browser-0.4/requirements.txt",
+          "sha256": "adc9b8b95fa19d2a39d605a300241cf767ce34b2053b60f809b2abb0a4205a2e"
+        },
+        {
+          "path": "profiles/browser-0.4/schemas/rlab-host-0.4.schema.json",
+          "sha256": "97147ae1494465138acc77372e9a90cae3fff44fff9109db3744fba97cd6bc5d"
+        },
+        {
+          "path": "profiles/browser-0.4/schemas/rlab-page-manifest-0.4.schema.json",
+          "sha256": "904bd91ceaf57ddee29e9bb69f99ee28dcbf07c7cf9f92f0f2cba921def2b2b8"
+        },
+        {
+          "path": "profiles/browser-0.4/tests/test_rlab.py",
+          "sha256": "c8e908d120dac6937520edcbf81c43d5a7d9843c25334fed8a6df3ac5f0c8c88"
+        },
+        {
+          "path": "profiles/browser-0.4/tools/rlab.py",
+          "sha256": "52366e6b71933361c6fc0934de94b25adc8f916dcf5d9fb9bb8c1c8c14b26a2e"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://revenuelab.ratehighway.com/schemas/rlab-page/0.4/schema.json",
+  "standard": "rlab.page",
+  "standardVersion": "0.4",
+  "profile": "RLAB-PAGE-0.4",
+  "id": "com.example.group-manager",
+  "name": "Car Group Manager (Sample)",
+  "description": "Synthetic RLAB-PAGE-0.4 example: view and change the car groups of sample Location AAA in Utilization 4.",
+  "version": "0.1.0",
+  "publisher": {
+    "id": "com.example.builder",
+    "name": "Example Builder (sample)"
+  },
+  "hostApi": {
+    "minimum": "0.4.0",
+    "maximumExclusive": "0.5.0"
+  },
+  "delivery": {
+    "mode": "bundle",
+    "entry": "app/index.html"
+  },
+  "display": {
+    "mode": "workspace",
+    "themeAware": false
+  },
+  "permissions": {
+    "requested": [
+      "context.read",
+      "utilization.read",
+      "utilization.manage"
+    ],
+    "required": [
+      "context.read",
+      "utilization.read",
+      "utilization.manage"
+    ]
+  },
+  "context": {
+    "required": [
+      "environment"
+    ],
+    "optional": [
+      "locale"
+    ]
+  },
+  "services": [
+    {
+      "id": "com.ratehighway.utilization4.query",
+      "minimum": "1.0.0",
+      "maximumExclusive": "2.0.0",
+      "required": true
+    }
+  ],
+  "events": {
+    "subscribe": [
+      "context.changed"
+    ],
+    "publish": []
+  },
+  "network": {
+    "connect": []
+  },
+  "dataHandling": {
+    "externalProcessing": false,
+    "retention": "none",
+    "personalData": "not-requested"
+  },
+  "support": {
+    "owner": "Example Builder (sample)",
+    "url": "https://example.com/support"
+  },
+  "license": {
+    "status": "open-source",
+    "file": "LICENSE.txt",
+    "identifier": "Apache-2.0"
+  },
+  "preview": {
+    "mockup": {
+      "path": "app/assets/preview/mockup.png",
+      "width": 1600,
+      "height": 900,
+      "alt": "Car group manager for sample Location AAA listing four car groups and their car classes, sample data."
+    },
+    "thumbnail": {
+      "path": "app/assets/preview/thumbnail.png",
+      "width": 640,
+      "height": 360,
+      "alt": "Four sample car groups for Location AAA with their car classes."
+    }
+  },
+  "extensions": {}
+}

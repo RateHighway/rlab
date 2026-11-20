@@ -30,7 +30,11 @@ into unreported use.
 | Central admission overlay | Registration, current host permission, deployment purpose/approval and lease requirements for official participation |
 
 The browser bridge's protocol string `"0.2"` and host API version `"0.2.0"`
-are different fields. Preserve the supplied values and compare according to
+are different fields. `RLAB-PAGE-0.4` keeps the protocol string `"0.2"` and
+uses host API `0.4.0`. A host that supports both browser profiles chooses the
+checker by `profile`, publishes one capability document per profile, speaks
+each page's host API version and never sends `utilization.manage` to a 0.2
+page. Preserve the supplied values and compare according to
 the selected contract. Changing a filename or standard version does not
 convert a package into another profile.
 
@@ -40,7 +44,9 @@ Draft 0.2 allows dotted, namespaced keys in its `extensions` metadata object.
 That metadata is nonessential: it cannot add permissions, hidden execution
 requirements or required runtime behavior. The first documented key is
 `com.ratehighway.rlab.preview`, which declares a page's mockup and thumbnail
-images; see [page preview images](preview-images.md). The manifest is otherwise closed,
+images; see [page preview images](preview-images.md). In `RLAB-PAGE-0.4`
+the same declaration became a required top-level `preview` field, a versioned
+contract change rather than extension metadata. The manifest is otherwise closed,
 and unknown scopes are rejected. Versioned service declarations are a
 separate mechanism.
 

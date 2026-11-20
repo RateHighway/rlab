@@ -8,12 +8,13 @@
 | [schemas/registration-record.schema.json](schemas/registration-record.schema.json), [schemas/deployment-record.schema.json](schemas/deployment-record.schema.json) | Central record contracts, separate from closed page manifests |
 | [tools/validate_registered_page.py](tools/validate_registered_page.py) | Authoritative central admission and offline repository audit |
 | [profiles/browser-readonly-0.2/](profiles/browser-readonly-0.2/) | Read-only browser profile source, schemas, sample and tools |
+| [profiles/browser-0.4/](profiles/browser-0.4/) | Browser page profile 0.4 (in development): required preview images and Utilization 4 group changes |
 | [profiles/declarative-design-0.3/](profiles/declarative-design-0.3/) | Design-only declarative profile source, schemas and four examples |
 | [docs/getting-started.md](docs/getting-started.md) | Builder and host entry points |
 | [docs/create-a-page.md](docs/create-a-page.md) | Design, build and check a page |
 | [docs/host-integration.md](docs/host-integration.md) | Implement support in an independent application |
 | [docs/extensions-and-compatibility.md](docs/extensions-and-compatibility.md) | Versioned extension contracts and compatibility boundaries |
-| [docs/preview-images.md](docs/preview-images.md) | Mockup and thumbnail images for a page: sizes, content rules and the `com.ratehighway.rlab.preview` declaration |
+| [docs/preview-images.md](docs/preview-images.md) | Mockup and thumbnail images for a page: sizes, content rules, the required 0.4 `preview` field and the 0.2 `com.ratehighway.rlab.preview` declaration |
 | [docs/agent-quickstart.md](docs/agent-quickstart.md) | Pinned source consumption and agent boundaries |
 | [docs/conformance.md](docs/conformance.md) | What offline checks and future host tests establish |
 | [docs/releases.md](docs/releases.md) | Build, verification and publication sequence |

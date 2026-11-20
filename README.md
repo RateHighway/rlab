@@ -58,7 +58,10 @@ presence of these files.
 | --- | --- | --- |
 | [`RLAB-PAGE-READONLY-0.2`](profiles/browser-readonly-0.2/README.md) | Closed manifest/host schemas, compiled synthetic browser page, archive packer and offline validator | Page code is supplied; an isolated HTTPS host and its protocol implementation are still required. |
 | [`RLAB-DECLARATIVE-DESIGN-0.3`](profiles/declarative-design-0.3/README.md) | Closed document schemas, four synthetic designs, design checker and host catalogue fixture | Design-only. No rendering, actions, workflow execution or scheduling. |
+| [`RLAB-PAGE-0.4`](profiles/browser-0.4/README.md) | Closed manifest/host schemas, synthetic Car Group Manager page with captured preview images, packer and offline checker | Draft Standard 0.4, in development. Adds required preview images and `utilization.manage` (Utilization 4 group changes only). No host supports it yet. |
 
+0.4 is the next browser-page version: the 0.2 page plus required preview
+images and one write permission. 0.2 stays supported for pages that only read.
 The declarative design is the direction for a future host-rendered page path.
 The browser profile is a separate, more isolated integration path. The highest
 draft number is not automatically the right implementation target.

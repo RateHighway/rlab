@@ -136,7 +136,8 @@ host session from starting.
 
 Add a mockup and a thumbnail image of the page under `app/assets/preview/` and
 declare them in the manifest's `extensions` object. They are recommended for
-every 0.2 page and planned to be required in the next browser page profile.
+every 0.2 page and required, as the top-level `preview` field, in
+`RLAB-PAGE-0.4`.
 Sizes, content rules and the declaration are in
 [page preview images](preview-images.md).
 
@@ -165,6 +166,18 @@ compatibility with an installed application.
 Opening the example HTML directly deliberately fails to establish a session.
 The host must supply reviewed origin configuration and the protocol described
 in the [integration guide](host-integration.md).
+
+### A page that saves group changes: RLAB-PAGE-0.4
+
+If the page must save Utilization 4 location group or car group changes, use
+[`RLAB-PAGE-0.4`](../profiles/browser-0.4/README.md) instead, starting from its
+[Car Group Manager example](../profiles/browser-0.4/examples/group-manager/).
+It requests `utilization.manage` with `utilization.read` and a required
+utilization service, and declares its preview images in a required `preview`
+field. The host applies each change, logs it and offers undo; the page sends
+one idempotency key per change and shows the service's messages unchanged.
+0.4 is a Draft Standard in development and no host supports it yet. Follow
+its [developer guide](../profiles/browser-0.4/docs/DEVELOPER-GUIDE.md).
 
 ## Upload to RevenueLab.build
 

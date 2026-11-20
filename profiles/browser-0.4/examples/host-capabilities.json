@@ -1,0 +1,38 @@
+{
+  "hostId": "com.example.host",
+  "name": "Example 0.4 host fixture (not a live service)",
+  "standardVersions": [
+    "0.4"
+  ],
+  "profiles": [
+    "RLAB-PAGE-0.4"
+  ],
+  "hostApiVersion": "0.4.0",
+  "deliveryModes": [
+    "bundle"
+  ],
+  "permissions": [
+    "context.read",
+    "utilization.read",
+    "utilization.manage"
+  ],
+  "contextKeys": [
+    "environment",
+    "locale"
+  ],
+  "services": [
+    {
+      "id": "com.ratehighway.utilization4.query",
+      "version": "1.0.0"
+    }
+  ],
+  "limits": {
+    "compressedBytes": 25000000,
+    "expandedBytes": 100000000,
+    "fileBytes": 25000000,
+    "entries": 2000,
+    "pathCharacters": 240
+  },
+  "documentationUrl": "https://example.com/developers",
+  "supportUrl": "https://example.com/support"
+}

@@ -10,7 +10,14 @@ instructions.
 
 Use `RLAB-PAGE-READONLY-0.2` for the supplied read-only browser package and
 its isolated host protocol. It includes page assets and package checks, not
-a host application. Use `RLAB-DECLARATIVE-DESIGN-0.3` for validating or studying
+a host application. It is still the target for every page that only reads.
+
+Use [`RLAB-PAGE-0.4`](../profiles/browser-0.4/README.md) for a page that saves
+Utilization 4 location group and car group changes. It is the 0.2 page plus a
+required `preview` field and the `utilization.manage` permission, which allows
+those group changes and their undo, nothing else. It is a Draft Standard in
+development: no host supports it yet, so do not tell a builder a 0.4 page can
+run live until their host says so. Use `RLAB-DECLARATIVE-DESIGN-0.3` for validating or studying
 declarative page designs. It cannot execute an action, run a workflow or
 schedule a job.
 
@@ -19,7 +26,8 @@ version, standard version, profile version, host API version and page version
 identify different contracts. Current profiles reject unknown fields.
 
 For every browser page you build or update, include a mockup and a thumbnail
-captured from the real page with sample data, declared under the
+captured from the real page with sample data. In 0.4 declare them in the
+required top-level `preview` field; in 0.2 declare them under the
 `com.ratehighway.rlab.preview` extensions key. Read
 [page preview images](preview-images.md). Never invent a preview image.
 

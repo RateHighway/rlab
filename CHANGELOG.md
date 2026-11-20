@@ -1,5 +1,20 @@
 # Changelog
 
+## RLAB-PAGE-0.4 browser profile, in development - 2026-11-19
+
+- Added [`profiles/browser-0.4/`](profiles/browser-0.4/README.md), Draft
+  Standard 0.4 (`RLAB-PAGE-0.4`, host API 0.4.0). It is the 0.2 browser page
+  with a required top-level `preview` field (mockup 1600 x 900, thumbnail
+  640 x 360, PNG or WebP) and the `utilization.manage` permission for
+  Utilization 4 location group and car group changes and their undo, nothing
+  else. The standard states what a host and a page must do for each write.
+- New closed manifest and host schemas, a 0.4 checker (codes RL012 to RL018,
+  and a `nextStep` on every error), tests, and the synthetic Car Group Manager
+  example with preview images captured from the page.
+- `RLAB-PAGE-READONLY-0.2` is byte-for-byte unchanged and stays supported. No
+  host supports 0.4 yet. Release builds still package only the 0.2 and 0.3
+  examples.
+
 ## Page preview images - 2026-11-19
 
 - Added [page preview images](docs/preview-images.md): a mockup

@@ -1,9 +1,11 @@
 # Page Preview Images
 
-Status: **Draft Standard convention, recommended for `RLAB-PAGE-READONLY-0.2`.**
-It is planned to become a required field in the next browser page profile.
-That profile does not exist yet; until it is published, nothing here is a
-validation rule and no checker refuses a page without preview images.
+Status: **Required in `RLAB-PAGE-0.4` as the top-level `preview` field;
+recommended for `RLAB-PAGE-READONLY-0.2` under the extension key
+`com.ratehighway.rlab.preview`.** 0.4 is a Draft Standard in development. The
+0.4 checker refuses a page whose images are missing, are not PNG or WebP, have
+the wrong pixel size or are too large (codes RL012 to RL016). For 0.2 the key
+stays a recommendation and no 0.2 checker refuses a page without it.
 
 A page carries two preview images so that a host, a page list, a catalogue or a
 reviewer can show what the page looks like without running it:
@@ -16,8 +18,8 @@ change what it does, what it may read or how a host displays it.
 
 ## When to Use This
 
-Use it for every new page and every new version of a page that targets
-`RLAB-PAGE-READONLY-0.2`. Declaring the images is optional in 0.2, so existing
+Use it for every new page and every new version of a page. Declaring the
+images is required in `RLAB-PAGE-0.4` and optional in 0.2, so existing 0.2
 pages remain valid without them. Do not use it to carry anything other than
 these two images.
 
@@ -35,7 +37,24 @@ Both formats are already allowed in a 0.2 page package. The files sit under the
 package's `app/` tree, so they are packaged and retained with the page version
 they describe.
 
-## Manifest Declaration
+## Manifest Declaration in RLAB-PAGE-0.4
+
+In 0.4 the declaration is a required top-level field named `preview`, with the
+same `mockup` and `thumbnail` objects shown below. The schema fixes the paths,
+`width` and `height`, and limits `alt` to 1 to 150 characters. Do not also use
+the extension key; the 0.4 checker warns if it is present. See the
+[0.4 standard](../profiles/browser-0.4/docs/RLAB-PAGE-STANDARD.md).
+
+```json
+"preview": {
+  "mockup": {"path": "app/assets/preview/mockup.png", "width": 1600, "height": 900,
+             "alt": "Car group manager for sample Location AAA listing four car groups, sample data."},
+  "thumbnail": {"path": "app/assets/preview/thumbnail.png", "width": 640, "height": 360,
+                "alt": "Four sample car groups for Location AAA with their car classes."}
+}
+```
+
+## Manifest Declaration in RLAB-PAGE-READONLY-0.2
 
 Declare the images in the manifest's `extensions` object under the key
 `com.ratehighway.rlab.preview`. Draft 0.2 allows namespaced, nonessential
@@ -122,8 +141,10 @@ their place.
 
 ## Limits
 
-- This is a convention inside existing 0.2 metadata. The 0.2 schema does not
-  check the key's contents, and the reference checker does not open the images.
+- In 0.2 this is a convention inside existing metadata. The 0.2 schema does
+  not check the key's contents, and the 0.2 checker does not open the images.
+- The 0.4 checker reads each image's header for its type and pixel size and
+  checks its byte size. It does not judge what the image shows.
 - A host is not required to display preview images.
 - Preview images are not approval, certification or proof of correct
   calculations.
