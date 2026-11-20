@@ -1,5 +1,12 @@
 # Central registration and host admission
 
+> **A successor is under public review.** `RLAB-CENTRAL-ADMISSION-2` proposes
+> moving central authority from this repository's archive to a registry
+> service, with the record schemas unchanged. It is a proposal and is **not in
+> force**; the policy below governs every host. RateHighway has already moved
+> its own host to the proposal, which is disclosed in it. See
+> [the proposal](central-admission-2-proposal.md).
+
 The official RevenueLab ecosystem uses **`RLAB-CENTRAL-ADMISSION-1`** as a
 mandatory admission policy for governed hosts. Before a host installs,
 enables or renders a page, its exact package must be registered centrally and
