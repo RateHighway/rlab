@@ -4,7 +4,9 @@
 > moving central authority from this repository's archive to a registry
 > service, with the record schemas unchanged. It is a proposal and is **not in
 > force**; the policy below governs every host. RateHighway has already moved
-> its own host to the proposal, which is disclosed in it. See
+> its own host to the proposal, which is disclosed in it. An amendment to the
+> proposal adds an automatic reviewer that may approve placements after
+> examining every file of a page; it is also not in force. See
 > [the proposal](central-admission-2-proposal.md).
 
 The official RevenueLab ecosystem uses **`RLAB-CENTRAL-ADMISSION-1`** as a
